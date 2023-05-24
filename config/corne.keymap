@@ -35,7 +35,7 @@
                         bindings = <
    &kp TAB       &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &kp BSPC
    &mt LCTRL ESC &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
-   &skq LSHFT    &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &sk LSHFT
+   &skq LSHFT    &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &skq LSHFT
         &mt LALT UP &mt LGUI DOWN &lt L_SYMB SPACE     &kp BSPC &kp LEFT &kp RIGHT
                         >;
                 };
