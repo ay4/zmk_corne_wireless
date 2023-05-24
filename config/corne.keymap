@@ -30,7 +30,7 @@
                         bindings = <
    &kp TAB   &tm B DLLR  &tm Y UNDER &tm O LBKT &kp U        &none            &tm FSLH FSLH   &tm L EXCL  &tm D RBKT &tm W STAR &tm Z PRCNT  &kp BSPC
    &kp LCTRL &tm C AT    &kp I       &tm E LPAR &tm A COMMA  &tm SEMI SEMI    &tm V COLON     &tm H DOT   &tm T RPAR &kp S      &tm N AMPS   &kp SQT
-   &kp LSHFT &tm G EQUAL &tm X LT    &tm J LBRC &tm K APOS   &tm DQT DQT      &tm TILDE TILDE &tm R QMARK &tm M RBRC &F GT      &tm P EQUAL  &kp LSHFT
+   &kp LSHFT &tm G EQUAL &tm X LT    &tm J LBRC &tm K APOS   &tm DQT DQT      &tm TILDE TILDE &tm R QMARK &tm M RBRC &tm F GT   &tm P EQUAL  &kp LSHFT
                                                   &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
                         >;
                 };
