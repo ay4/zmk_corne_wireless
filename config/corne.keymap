@@ -14,7 +14,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "TEST_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;    // <---[[moderate duration]]
+            tapping-term-ms = <150>;    // <---[[moderate duration]]
             quick-tap-ms = <0>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
@@ -28,9 +28,9 @@
 // | SHFT |  G/=  |  X/<  |  J/{  |  K/'  | /"   |   |   /~  |  R/?   |  M/}  |  F/>  |  P/=  | SHIFT  |
 //                             | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
-   &kp TAB   &tm B DLLR  &tm Y UNDER &tm O LBKT &kp U        &none            &tm FSLH FSLH   &tm L EXCL  &tm D RBKT &tm W STAR &tm Z PRCNT  &kp BSPC
-   &kp LCTRL &tm C AT    &kp I       &tm E LPAR &tm A COMMA  &tm SEMI SEMI    &tm V COLON     &tm H DOT   &tm T RPAR &kp S      &tm N AMPS   &kp SQT
-   &kp LSHFT &tm G EQUAL &tm X LT    &tm J LBRC &tm K APOS   &tm DQT DQT      &tm TILDE TILDE &tm R QMARK &tm M RBRC &tm F GT   &tm P EQUAL  &kp LSHFT
+   &kp TAB   &tm DLLR B  &tm UNDER Y &tm LBKT O &kp U        &none            &tm FSLH FSLH   &tm EXCL L   &tm RBKT D  &tm STAR W  &tm PRCNT Z   &kp BSPC
+   &kp LCTRL &tm AT C    &kp I       &tm LPAR E &tm COMMA A  &tm SEMI SEMI    &tm COLON V     &tm DOT H    &tm RPAR T  &kp S      &tm AMPS N    &kp SQT
+   &kp LSHFT &tm EQUAL G &tm LT X    &tm LBRC J &tm APOS K   &tm DQT DQT      &tm TILDE TILDE &tm QMARK R  &tm RBRC M  &tm GT F   &tm EQUAL P   &kp LSHFT
                                                   &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
                         >;
                 };
