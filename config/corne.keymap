@@ -17,6 +17,10 @@
 
 / {
         macros {
+        
+        // Press a hotkey to switch
+        // to a different layout in OS
+        // and then toggle the language layer.
 
         to_ru: switch_to_ru {
             label = "switch_to_ru";
@@ -39,17 +43,9 @@
         };
 
     };
-
         behaviors {
-          skq: sticky_key_quick_release {
-            compatible = "zmk,behavior-sticky-key";
-            label = "STICKY_KEY_QUICK_RELEASE";
-            #binding-cells = <1>;
-            bindings = <&kp>;
-            release-after-ms = <1000>;
-            quick-release;
-            ignore-modifiers;
-      };
+
+  
     };
  
         keymap {
@@ -61,22 +57,22 @@
 //                             | ⌘ / ↑ | ⌥ / ↓ | SPC |   | NAV/BACKSPACE | ←  | → |
                         bindings = <
    &lt NAV TAB    &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &none
-   &mt  LCTRL ESC &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
-   &skq LSHFT     &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &skq LSHFT
+   &mt LCTRL ESC  &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
+   &sk LSHFT     &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &sk LSHFT
                  &mt LALT UP &mt LGUI DOWN &lt 2 SPACE     &lt NAV BSPC &kp LEFT &kp RIGHT
                         >;
                 };
                                 russian_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Б  |  Ы  |   О  |  У  |  Э  |   |  Ц  |  Л  |  Д  |  З  |  Ъ  | BKSP |
-// | BTCLR|  Ч  |  И  |   Е  |  А  |  Й  |   |  В  |  Ь  |  Т  |  С  |  Н  |  Ю   |
-// | SHFT |  Г  |  Ш  |   Ж  |  К  |  Щ  |   |  Х  |  Р  |  М  |  Ф  |  П  |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+// |  ___ |  Б  |  Ы  |   О  |  У  |  Э  |   |  Ц  |  Л  |  Д  |  З  |  Ъ  | ____ |
+// |  ___ |  Ч  |  И  |   Е  |  А  |  Й  |   |  В  |  Ь  |  Т  |  С  |  Н  |  Ю   |
+// | ____ |  Г  |  Ш  |   Ж  |  К  |  Щ  |   |  Х  |  Р  |  М  |  Ф  |  П  |      |
+//                    | ___ | ___ |  ___ |   | ___ | ___ | ___ |
                         bindings = <
-   &kp TAB     &kp COMMA &kp S   &kp J     &kp E  &kp APOS    &kp W    &kp K  &kp L &kp P  &kp RBKT &kp BSPC
-   &bt BT_CLR  &kp X     &kp B   &kp T     &kp F  &kp Q       &kp D    &kp M  &kp N &kp C  &kp Y    &kp GT
-   &skq LSHFT  &kp U     &kp I   &kp SEMI  &kp R  &kp O       &kp LBKT &kp H  &kp V &kp A  &kp G    &trans
-                    &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+   &trans   &kp COMMA &kp S   &kp J     &kp E  &kp APOS    &kp W    &kp K  &kp L &kp P  &kp RBKT &trans
+   &trans   &kp X     &kp B   &kp T     &kp F  &kp Q       &kp D    &kp M  &kp N &kp C  &kp Y    &kp GT
+   &trans   &kp U     &kp I   &kp SEMI  &kp R  &kp O       &kp LBKT &kp H  &kp V &kp A  &kp G    &trans
+                               &trans  &trans   &trans      &trans  &trans   &trans
                         >;
                 };
 
@@ -85,12 +81,12 @@
 // | ____ |  $  |  _  |  [  | XXX   | XXX  |   |   / |  !   |  ]  |  *  |  %  | ____  |
 // | ____ |  @  |  -- |  (  |  ,    |  ;   |   |  :  |  .   |  )  |  -- |  &  | ____  |
 // | ____ |  =  |  <  |  {  |  '    |  "   |   |   ~ |  ?   |  }  |  >  |  =  | ____  |
-//                             | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+//                       | XXX | XXX | XXX |   | XXX | XXX  | XXX |
                         bindings = <
    &trans  &kp DLLR  &kp UNDER &kp LBKT &none      &none       &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR &kp PRCNT   &trans
    &trans  &kp AT    &none     &kp LPAR &kp COMMA  &kp SEMI    &kp COLON  &kp DOT    &kp RPAR  &none    &kp AMPS    &trans
    &trans  &kp EQUAL &kp LT    &kp LBRC &kp APOS   &kp DQT     &kp TILDE  &kp QMARK  &kp RBRC  &kp GT   &kp EQUAL   &trans
-                                                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+                            &none &none &none                  &none &none &none
                         >;
                 };
 
@@ -99,12 +95,12 @@
 // | ____   |  ____  |  ← TAB |     ↑  |    TAB → |     ___  |   | ___ | ← ⌘⇧ | ⌥ ↑ | ⇧⌘ →| ___ | ___  |
 // | ____   |  ____  |  ← ⌥   |     ↓  |    ⌥ →   |     ___  |   | ___ | ← ⌥⇧ | ⌥ ↓ | ⌥⇧ →| ___ | ___  |
 // | BL CLS | BLCH 1 | BLCH 2 | BLCH 3 | BLCH 4   |  BLCH 5  |   | ___ | ___  | ___ | ___ | ___ | ___  |
-//                           | GUI |     | SPC |         | ENT |     | ALT |
+//                                        | ___ | ___ |  ___ |    | ___ | ___ | ___ |
                         bindings = <
    &trans      &trans        &kp LG(LS(LBKT)) &kp UP       &kp LG(LS(RBKT)) &trans         &trans &kp LG(LS(LEFT)) &kp LA(UP)   &kp LG(LS(RIGHT))  &trans  &trans
    &trans      &trans        &kp LA(LEFT)     &kp DOWN     &kp LA(RIGHT)    &trans         &trans &kp LA(LS(LEFT)) &kp LA(DOWN) &kp LA(LS(RIGHT))  &trans  &trans
    &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2 &bt BT_SEL 3     &bt BT_SEL 4   &trans &trans           &trans       &trans             &trans  &trans 
-                                           &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+                                                               &trans  &trans   &trans     &trans  &trans   &trans
                         >;
                 };
 
@@ -113,12 +109,12 @@
 // | ____   |  ____  |  ____ |  ____  | ____ | ___  |      | ___ | 1 | 2 | 3 | ___ | ___  |
 // | ____   |  ____  |  ____ |  ____  | ____ | ___  |      | ___ | 4 | 5 | 6 | ___ | ___  |
 // | ____   |  ____  |  ____ |  ____  | ____ | ___  |      | ___ | 7 | 8 | 9 | ___ | ___  |
-//                           | GUI |     | SPC |         | ___ |  0  | 0 |
+//                               | ___ | ___ |  ___ |      | ___ |  0  | 0 |
                         bindings = <
    &trans   &trans  &trans  &trans  &trans  &trans         &trans  &kp N1   &kp N2  &kp N3  &trans  &trans
    &trans   &trans  &trans  &trans  &trans  &trans         &trans  &kp N4   &kp N5  &kp N6  &trans  &trans
    &trans   &trans  &trans  &trans  &trans  &trans         &trans  &kp N7   &kp N8  &kp N9  &trans  &trans 
-                            &kp LGUI &trans   &kp SPACE   &trans   &kp N0 &kp N0
+                            &trans  &trans  &trans         &trans   &kp N0 &kp N0
                         >;
                 };
                             qwerty_layer {
@@ -126,12 +122,12 @@
 // | ____   |  Q  |  W |  E  | R | T  |      | Y | U | I | O | P | [  |
 // | ____   |  A  |  S |  D  | F | G  |      | H | J | K | L | ; | '  |
 // | ____   |  Z  |  X |  C  | V | B  |      | N | M | , | . | / |    |
-//                           | GUI |     | SPC |         | ___ |  0  | 0 |
+//                 | ___ | ___ |  ___ |       | ___ | ___ | ___ |
                         bindings = <
    &trans   &kp Q  &kp W  &kp E  &kp R  &kp T         &kp Y  &kp U   &kp I      &kp O    &kp P     &kp LBKT
    &trans   &kp A  &kp S  &kp D  &kp F  &kp G         &kp H  &kp J   &kp K      &kp L    &kp SEMI  &kp APOS
    &trans   &kp Z  &kp X  &kp C  &kp V  &kp B         &kp N  &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans 
-                            &kp LGUI &trans   &kp SPACE   &trans   &kp N0 &kp N0
+                     &trans  &trans   &trans          &trans  &trans   &trans
                         >;
                 };
         };
