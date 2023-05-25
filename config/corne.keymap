@@ -70,9 +70,9 @@
 // | ____ |  ____  |  ____  | ___ | ___   |  ___  |   | ___ | ___  | ___ | ___ | ___ | ___  |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &trans  &trans  &kp LCMD(LS(LBKT)) &kp UP   &kp LCMD(LS(RBKT))  &trans     &trans &kp LCMD(LS(LEFT)) &kp LA(UP)   &kp LCMD(LS(RIGHT))  &trans  &trans
-   &trans  &trans  &kp LA(LEFT)       &kp DOWN &kp LA(RIGHT)       &trans     &trans &kp LALT(LS(LEFT)) &kp LA(DOWN) &kp LALT(LS(RIGHT))  &trans  &trans
-   &trans  &trans  &trans             &trans   &trans              &trans     &trans &trans             &trans       &trans               &trans  &trans
+   &trans  &trans  &kp LG(LS(LBKT))   &kp UP   &kp LG(LS(RBKT))  &trans       &trans &kp LG(LS(LEFT)) &kp LA(UP)   &kp LG(LS(RIGHT))  &trans  &trans
+   &trans  &trans  &kp LA(LEFT)       &kp DOWN &kp LA(RIGHT)     &trans       &trans &kp LA(LS(LEFT)) &kp LA(DOWN) &kp LA(LS(RIGHT))  &trans  &trans
+   &trans  &trans  &trans             &trans   &trans            &trans       &trans &trans           &trans       &trans             &trans  &trans
                                            &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };
