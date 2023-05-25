@@ -55,12 +55,12 @@
 // | CTRL / TAB  |  B    |  Y    |  O    |  U    |      |   |       |  L     |  D    |  W    |  Z    |            |
 // | MEH(?) /ESC |  C    |  I    |  E    |  A    |      |   |  V    |  H     |  T    |  S    |  N    |  Q         |
 // | STICK SHFT  |  G    |  X    |  J    |  K    |      |   |       |  R     |  M    |  F    |  P    | STICK SHFT |
-//                           | ⌘ / ↑ | ⌥ / ↓ | SYM/SPC |   | NAV/BACKSPACE | ←  | → |
+//                            | ⌘ / ↑ | ⌥ / ↓ | SYM/SPC |   | NUM/BACKSPACE | ←  | → |
                         bindings = <
    &mt LCTRL TAB          &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &none
    &mt LC(LA(LSHFT)) ESC  &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
    &sk LSHFT              &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &sk LSHFT
-                 &mt LALT UP &mt LGUI DOWN &lt SYM SPACE     &lt NAV BSPC &kp LEFT &kp RIGHT
+                 &mt LALT UP &mt LGUI DOWN &lt SYM SPACE     &lt NUM BSPC &kp LEFT &kp RIGHT
                         >;
                 };
                                 russian_layer {
