@@ -12,6 +12,7 @@
 #define RU  1
 #define SYM 2
 #define NAV 3
+#define NUM 4
 
 / {
         behaviors {
@@ -79,6 +80,20 @@
    &trans      &trans        &kp LA(LEFT)     &kp DOWN     &kp LA(RIGHT)    &trans         &trans &kp LA(LS(LEFT)) &kp LA(DOWN) &kp LA(LS(RIGHT))  &trans  &trans
    &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2 &bt BT_SEL 3     &bt BT_SEL 4   &trans &trans           &trans       &trans             &trans  &trans 
                                            &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+                        >;
+                };
+
+                                num_layer {
+// -----------------------------------------------------------------------------------------
+// | ____   |  ____  |  ____ |  ____  | ____ | ___  |      | ___ | 1 | 2 | 3 | ___ | ___  |
+// | ____   |  ____  |  ____ |  ____  | ____ | ___  |      | ___ | 4 | 5 | 6 | ___ | ___  |
+// | ____   |  ____  |  ____ |  ____  | ____ | ___  |      | ___ | 7 | 8 | 9 | ___ | ___  |
+//                           | GUI |     | SPC |         | ___ |  0  | 0 |
+                        bindings = <
+   &trans   &trans  &trans  &trans  &trans  &trans         &trans  &kp N1   &kp N2  &kp N3  &trans  &trans
+   &trans   &trans  &trans  &trans  &trans  &trans         &trans  &kp N4   &kp N5  &kp N6  &trans  &trans
+   &trans   &trans  &trans  &trans  &trans  &trans         &trans  &kp N7   &kp N8  &kp N9  &trans  &trans 
+                            &kp LGUI &trans   &kp SPACE   &trans   &kp N0 &kp N0
                         >;
                 };
         };
