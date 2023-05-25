@@ -79,15 +79,15 @@
 
                 symbol_layer {
 // -----------------------------------------------------------------------------------------
-// | ____ |  $  |  _  |  [  | XXX   | XXX  |   |   / |  !   |  ]  |  *  |  %  | ____  |
+// | ____ |  $  |  _  |  [  |  -    | --   |   |   / |  !   |  ]  |  *  |  %  | ____  |
 // | ____ |  @  |  -- |  (  |  ,    |  ;   |   |  :  |  .   |  )  |  -- |  &  | ____  |
 // | ____ |  =  |  <  |  {  |  '    |  "   |   |   ~ |  ?   |  }  |  >  |  =  | ____  |
 //                       | XXX | XXX | XXX |   | RET | XXX  | XXX |
                         bindings = <
-   &trans  &kp DLLR  &kp UNDER &kp LBKT &none      &none       &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR &kp PRCNT   &trans
-   &trans  &kp AT    &none     &kp LPAR &kp COMMA  &kp SEMI    &kp COLON  &kp DOT    &kp RPAR  &none    &kp AMPS    &trans
-   &trans  &kp EQUAL &kp LT    &kp LBRC &kp APOS   &kp DQT     &kp TILDE  &kp QMARK  &kp RBRC  &kp GT   &kp EQUAL   &trans
-                            &none &none &none                  &kp RET &none &none
+   &trans  &kp DLLR  &kp UNDER &kp LBKT &kp MINUS  &kp LA(LS(MINUS))       &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR &kp PRCNT   &trans
+   &trans  &kp AT    &none     &kp LPAR &kp COMMA  &kp SEMI                &kp COLON  &kp DOT    &kp RPAR  &none    &kp AMPS    &trans
+   &trans  &kp EQUAL &kp LT    &kp LBRC &kp APOS   &kp DQT                 &kp TILDE  &kp QMARK  &kp RBRC  &kp GT   &kp EQUAL   &trans
+                                         &none &none &none                  &kp RET &none &none
                         >;
                 };
 
