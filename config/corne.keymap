@@ -29,12 +29,12 @@
         keymap {
                 compatible = "zmk,keymap";               default_layer {
 // -----------------------------------------------------------------------------------------
-// | TAB        |  B    |  Y    |  O    |  U    |      |   |       |  L     |  D    |  W    |  Z    |            |
+// | NAV / TAB  |  B    |  Y    |  O    |  U    |      |   |       |  L     |  D    |  W    |  Z    |            |
 // | CTRL/ESC   |  C    |  I    |  E    |  A    |      |   |  V    |  H     |  T    |  S    |  N    |  Q         |
 // | STICK SHFT |  G    |  X    |  J    |  K    |      |   |       |  R     |  M    |  F    |  P    | STICK SHFT |
 //                             | ⌘ / ↑ | ⌥ / ↓ | SPC |   | NAV/BACKSPACE | ←  | → |
                         bindings = <
-   &kp  TAB       &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &none
+   &lt NAV TAB    &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &none
    &mt  LCTRL ESC &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
    &skq LSHFT     &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &skq LSHFT
                  &mt LALT UP &mt LGUI DOWN &lt 2 SPACE     &lt NAV BSPC &kp LEFT &kp RIGHT
