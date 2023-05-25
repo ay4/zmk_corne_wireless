@@ -15,6 +15,30 @@
 #define NUM 4
 
 / {
+        macros {
+
+        to_ru: switch_to_ru {
+            label = "switch_to_ru";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&kp LG(LA(N2))>
+                , <&tog RU>
+                ;
+        };
+
+        to_en: switch_to_en {
+            label = "switch_to_en";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&kp LG(LA(N1))>
+                , <&tog EN>
+                ;
+        };
+
+    };
+
         behaviors {
           skq: sticky_key_quick_release {
             compatible = "zmk,behavior-sticky-key";
@@ -25,6 +49,22 @@
             quick-release;
             ignore-modifiers;
       };
+         key2ru: key_to_ru {
+            compatible = "zmk,behavior-hold-tap";
+            label = "key_to_ru";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&to_ru>, <&skq>;
+        };  
+         key2en: key_to_en {
+            compatible = "zmk,behavior-hold-tap";
+            label = "key_to_en";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&to_en>, <&skq>;
+        };  
     };
  
         keymap {
@@ -37,7 +77,7 @@
                         bindings = <
    &lt NAV TAB    &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &none
    &mt  LCTRL ESC &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
-   &skq LSHFT     &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &skq LSHFT
+   &skq LSHFT     &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &key_to_ru LSHFT
                  &mt LALT UP &mt LGUI DOWN &lt 2 SPACE     &lt NAV BSPC &kp LEFT &kp RIGHT
                         >;
                 };
@@ -48,9 +88,9 @@
 // | SHFT |  Г  |  Ш  |   Ж  |  К  |  Щ  |   |  Х  |  Р  |  М  |  Ф  |  П  |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp TAB    &kp COMMA &kp S   &kp J     &kp E  &kp APOS    &kp W    &kp K  &kp L &kp P  &kp RBKT &kp BSPC
-   &bt BT_CLR &kp X     &kp B   &kp T     &kp F  &kp Q       &kp D    &kp M  &kp N &kp C  &kp Y    &kp GT
-   &kp LSHFT  &kp U     &kp I   &kp SEMI  &kp R  &kp O       &kp LBKT &kp H  &kp V &kp A  &kp G    &trans
+   &kp TAB           &kp COMMA &kp S   &kp J     &kp E  &kp APOS    &kp W    &kp K  &kp L &kp P  &kp RBKT &kp BSPC
+   &bt BT_CLR        &kp X     &kp B   &kp T     &kp F  &kp Q       &kp D    &kp M  &kp N &kp C  &kp Y    &kp GT
+   &key_to_en LSHFT  &kp U     &kp I   &kp SEMI  &kp R  &kp O       &kp LBKT &kp H  &kp V &kp A  &kp G    &trans
                     &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
                         >;
                 };
