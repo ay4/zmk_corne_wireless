@@ -24,14 +24,14 @@
         combo_to_en {
             timeout-ms = <50>;
             key-positions = <14 15 16>;
-            bindings = <&kp LC(SPACE) &tog EN>;
+            bindings = <&kp LC(SPACE) &to EN>;
         };
         
         // Press hts to switch to Russian
         combo_to_ru {
             timeout-ms = <50>;
             key-positions = <19 20 21>;
-            bindings = <&kp LC(SPACE) &tog RU>;
+            bindings = <&kp LC(SPACE) &to RU>;
         };
     };
         macros {
