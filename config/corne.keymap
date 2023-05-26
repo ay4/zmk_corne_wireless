@@ -23,14 +23,14 @@
         combo_to_en {
             timeout-ms = <50>;
             key-positions = <14 15 16>;
-            bindings = <&kp LC(SPACE) &to EN>;
+            bindings = <&kp LC(SPACE) &tog EN>;
         };
         
         // Press hts to switch to Russian
         combo_to_ru {
             timeout-ms = <50>;
             key-positions = <19 20 21>;
-            bindings = <&kp LC(SPACE) &to RU>;
+            bindings = <&kp LC(SPACE) &tog RU>;
         };
     };
         macros {
@@ -114,6 +114,16 @@
             bindings = <&alt_qwerty>, <&kp>;
         };
 
+        lt_cust: lt_cust {
+            compatible = "zmk,behavior-hold-tap";
+            label="LT_CUSTOM";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <125>;
+            bindings = <&mo>, <&kp>;
+        };
+
     };
  
         keymap {
@@ -127,7 +137,7 @@
    &mt LCTRL TAB          &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &none
    &mt LC(LA(LSHFT)) ESC  &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
    &sk LSHFT              &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &sk LSHFT
-                 &alt_sp 0 UP &cmd_sp 0 DOWN &lt SYM SPACE     &lt NUM BSPC &kp LEFT &kp RIGHT
+                 &alt_sp 0 UP &cmd_sp 0 DOWN &lt_cust SYM SPACE     &lt_cust NUM BSPC &kp LEFT &kp RIGHT
                         >;
                 };
                                 russian_layer {
