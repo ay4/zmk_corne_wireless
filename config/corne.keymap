@@ -1,4 +1,4 @@
-/*
+    /*
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
@@ -43,9 +43,64 @@
                 ;
         };
 
+        //
+        // Switches to the QWERTY layer with
+        // Left Command being held
+        //
+        cmd_qwerty: cmd_qwerty {
+            label = "cmd_qwerty";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &mo QWE &kp LCMD>
+                , <&macro_pause_for_release>
+                , <&macro_release &mo QWE &kp LCMD>
+                ;
+        };
+
+        //
+        // Switches to the QWERTY layer with
+        // Left Command being held
+        //
+        cmd_qwerty: cmd_qwerty {
+            label = "cmd_qwerty";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &mo QWE &kp LCMD>
+                , <&macro_pause_for_release>
+                , <&macro_release &mo QWE &kp LCMD>
+                ;
+        };
+
+        //
+        // Same for option
+        //
+        alt_qwerty: alt_qwerty {
+            label = "cmd_qwerty";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &mo QWE &kp LALT>
+                , <&macro_pause_for_release>
+                , <&macro_release &mo QWE &kp LALT>
+                ;
+        };
     };
         behaviors {
-
+        // 
+        // Mod-Special: Key if tapped,
+        // macro (to switch to another layer possibly)
+        // if held
+        //    
+        mod_sp: mod_sp {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <125>;
+            bindings = <&macro>, <&kp>;
+        };
   
     };
  
@@ -60,7 +115,7 @@
    &mt LCTRL TAB          &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &none
    &mt LC(LA(LSHFT)) ESC  &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
    &sk LSHFT              &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &sk LSHFT
-                 &mt LALT UP &mt LGUI DOWN &lt SYM SPACE     &lt NUM BSPC &kp LEFT &kp RIGHT
+                 &mod_sp alt_qwerty UP &mod_sp cmd_qwerty DOWN &lt SYM SPACE     &lt NUM BSPC &kp LEFT &kp RIGHT
                         >;
                 };
                                 russian_layer {
