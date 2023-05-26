@@ -12,9 +12,8 @@
 #define EN  0
 #define RU  1
 #define SYM 2
-
-#define NUM 4
-#define QWE 5
+#define NUM 3
+#define QWE 4
 
 / {
         combos {
