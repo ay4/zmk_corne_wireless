@@ -158,26 +158,26 @@
                 compatible = "zmk,keymap";               default_layer {
 // -----------------------------------------------------------------------------------------
 // | CTRL / TAB  |  B    |  Y    |  O    |  U    |      |   |       |  L     |  D    |  W    |  Z    |            |
-// | 2RU  / ESC  |  C    |  I    |  E    |  A    |      |   |  V    |  H     |  T    |  S    |  N    |  Q         |
+// |      ESC    |  C    |  I    |  E    |  A    |      |   |  V    |  H     |  T    |  S    |  N    |  Q / TO_RU |
 // | STICK SHFT  |  G    |  X    |  J    |  K    |      |   |       |  R     |  M    |  F    |  P    | STICK SHFT |
 //                            | ⌥ / ↑ | ⌘ / ↓ | SYM/SPC |   | NUM/BACKSPACE | ←  | → |
                         bindings = <
    &mt LCTRL TAB   &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &none
-   &hold_ru 0 ESC  &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
+   &kp ESC         &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &hold_ru 0 Q
    &sk LSHFT       &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &sk LSHFT
                  &alt_sp 0 UP &cmd_sp 0 DOWN &lt_cust SYM SPACE     &lt_cust NUM BSPC &kp LEFT &kp RIGHT
                         >;
                 };
                                 russian_layer {
 // -----------------------------------------------------------------------------------------
-// |  ___ |  Б  |  Ы  |   О  |  У  |  Э  |   |  Ц  |  Л  |  Д  |  З  |  Ъ  | ____  |
-// |  ___ |  Ч  |  И  |   Е  |  А  |  Й  |   |  В  |  Ь  |  Т  |  С  |  Н  | Ю/2EN |
-// | ____ |  Г  |  Ш  |   Ж  |  К  |  Щ  |   |  Х  |  Р  |  М  |  Ф  |  П  |       |
+// |  ___     |  Б  |  Ы  |   О  |  У  |  Э  |   |  Ц  |  Л  |  Д  |  З  |  Ъ  | ____  |
+// |  2RU/ESC |  Ч  |  И  |   Е  |  А  |  Й  |   |  В  |  Ь  |  Т  |  С  |  Н  |    Ю  |
+// |  ___     |  Г  |  Ш  |   Ж  |  К  |  Щ  |   |  Х  |  Р  |  М  |  Ф  |  П  |       |
 //                    | ___ | ___ |  ___ |   | ___ | ___ | ___ |
                         bindings = <
-   &trans   &kp COMMA &kp S   &kp J     &kp E  &kp APOS    &kp W    &kp K  &kp L &kp P  &kp RBKT &trans
-   &trans   &kp X     &kp B   &kp T     &kp F  &kp Q       &kp D    &kp M  &kp N &kp C  &kp Y    &hold_en 0 GT
-   &trans   &kp U     &kp I   &kp SEMI  &kp R  &kp O       &kp LBKT &kp H  &kp V &kp A  &kp G    &trans
+   &trans          &kp COMMA &kp S   &kp J     &kp E  &kp APOS    &kp W    &kp K  &kp L &kp P  &kp RBKT &trans
+   &hold_en 0 ESC  &kp X     &kp B   &kp T     &kp F  &kp Q       &kp D    &kp M  &kp N &kp C  &kp Y    &kp GT
+   &trans          &kp U     &kp I   &kp SEMI  &kp R  &kp O       &kp LBKT &kp H  &kp V &kp A  &kp G    &trans
                                &trans  &trans   &trans      &trans  &trans   &trans
                         >;
                 };
