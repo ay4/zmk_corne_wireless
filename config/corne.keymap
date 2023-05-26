@@ -12,7 +12,7 @@
 #define EN  0
 #define RU  1
 #define SYM 2
-#define NAV 3
+
 #define NUM 4
 #define QWE 5
 
@@ -139,20 +139,6 @@
    &bt BT_SEL 0  &kp AT    &none     &kp LPAR &kp COMMA  &kp SEMI                &kp COLON  &kp DOT    &kp RPAR  &none    &kp AMPS    &bt BT_SEL 3
    &bt BT_SEL 1  &kp EQUAL &kp LT    &kp LBRC &kp APOS   &kp DQT                 &kp TILDE  &kp QMARK  &kp RBRC  &kp GT   &kp EQUAL   &bt BT_SEL 4
                                          &none &none &none                  &kp RET &none &none
-                        >;
-                };
-
-                nav_layer {
-// -----------------------------------------------------------------------------------------
-// | ____   |  ____  |  ← TAB |     ↑  |    TAB → |     ___  |   | ___ | ← ⌘⇧ | ⌥ ↑ | ⇧⌘ →| ___    | ___      |
-// | ____   |  ____  |  ← ⌥   |     ↓  |    ⌥ →   |     ___  |   | ___ | ← ⌥⇧ | ⌥ ↓ | ⌥⇧ →| ___    | ___      |
-// | BL CLS | BLCH 1 | BLCH 2 | BLCH 3 | BLCH 4   |  BLCH 5  |   | ___ | ___  | ___ | ___ | PWR ON | PWR OFF  |
-//                                        | ___ | ___ |  ___ |    | ENTER | ___ | ___ |
-                        bindings = <
-   &trans      &trans        &kp LG(LS(LBKT)) &kp UP       &kp LG(LS(RBKT)) &trans         &trans &kp LG(LS(LEFT)) &kp LA(UP)   &kp LG(LS(RIGHT))  &trans           &trans
-   &trans      &trans        &kp LA(LEFT)     &kp DOWN     &kp LA(RIGHT)    &trans         &trans &kp LA(LS(LEFT)) &kp LA(DOWN) &kp LA(LS(RIGHT))  &trans           &trans
-   &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2 &bt BT_SEL 3     &bt BT_SEL 4   &trans &trans           &trans       &trans             &ext_power EP_ON &ext_power EP_OFF 
-                                                               &trans  &trans   &trans     &kp RET  &trans   &trans
                         >;
                 };
 
