@@ -111,7 +111,7 @@
    &mt LCTRL TAB          &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &none
    &mt LC(LA(LSHFT)) ESC  &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
    &sk LSHFT              &kp G  &kp X  &kp J &kp K   &none         &none   &kp R    &kp M  &kp F  &kp P   &sk LSHFT
-                 &alt_sp UP &cmd_sp DOWN &lt SYM SPACE     &lt NUM BSPC &kp LEFT &kp RIGHT
+                 &alt_sp 0 UP &cmd_sp 0 DOWN &lt SYM SPACE     &lt NUM BSPC &kp LEFT &kp RIGHT
                         >;
                 };
                                 russian_layer {
