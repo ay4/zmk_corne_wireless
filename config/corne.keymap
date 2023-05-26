@@ -106,7 +106,7 @@
 // | CTRL / TAB  |  B    |  Y    |  O    |  U    |      |   |       |  L     |  D    |  W    |  Z    |            |
 // | MEH(?) /ESC |  C    |  I    |  E    |  A    |      |   |  V    |  H     |  T    |  S    |  N    |  Q         |
 // | STICK SHFT  |  G    |  X    |  J    |  K    |      |   |       |  R     |  M    |  F    |  P    | STICK SHFT |
-//                            | ⌘ / ↑ | ⌥ / ↓ | SYM/SPC |   | NUM/BACKSPACE | ←  | → |
+//                            | ⌥ / ↑ | ⌘ / ↓ | SYM/SPC |   | NUM/BACKSPACE | ←  | → |
                         bindings = <
    &mt LCTRL TAB          &kp B  &kp Y  &kp O &kp U   &none         &none   &kp L    &kp D  &kp W  &kp Z   &none
    &mt LC(LA(LSHFT)) ESC  &kp C  &kp I  &kp E &kp A   &none         &kp V   &kp H    &kp T  &kp S  &kp N   &kp Q
@@ -171,15 +171,15 @@
                 };
                             qwerty_layer {
 // -----------------------------------------------------------------------------------------
-// | ____   |  Q  |  W |  E  | R | T  |      | Y | U | I | O | P | [  |
-// | ____   |  A  |  S |  D  | F | G  |      | H | J | K | L | ; | '  |
-// | ____   |  Z  |  X |  C  | V | B  |      | N | M | , | . | / |    |
-//                 | ___ | ___ |  ___ |       | ___ | ___ | ___ |
+// | ____    |  Q  |  W |  E  | R | T  |      | Y | U | I | O | P | [  |
+// | ____    |  A  |  S |  D  | F | G  |      | H | J | K | L | ; | '  |
+// | SHIFT   |  Z  |  X |  C  | V | B  |      | N | M | , | . | / |    |
+//              | ⌥ / ↑ | ⌘ / ↓ |  ___ |       | ___ | ___ | ___ |
                         bindings = <
-   &trans   &kp Q  &kp W  &kp E  &kp R  &kp T         &kp Y  &kp U   &kp I      &kp O    &kp P     &kp LBKT
-   &trans   &kp A  &kp S  &kp D  &kp F  &kp G         &kp H  &kp J   &kp K      &kp L    &kp SEMI  &kp APOS
-   &trans   &kp Z  &kp X  &kp C  &kp V  &kp B         &kp N  &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans 
-                     &trans  &trans   &trans          &trans  &trans   &trans
+   &trans      &kp Q  &kp W  &kp E  &kp R  &kp T         &kp Y  &kp U   &kp I      &kp O    &kp P     &kp LBKT
+   &trans      &kp A  &kp S  &kp D  &kp F  &kp G         &kp H  &kp J   &kp K      &kp L    &kp SEMI  &kp APOS
+   &kp LSHFT   &kp Z  &kp X  &kp C  &kp V  &kp B         &kp N  &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans 
+                     &mt LALT UP  &mt LCMD DOWN   &trans          &trans  &trans   &trans
                         >;
                 };
         };
