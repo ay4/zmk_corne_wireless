@@ -80,7 +80,7 @@
         //    
         cmd_sp: cmd_sp {
             compatible = "zmk,behavior-hold-tap";
-            label="CMD_SP"
+            label="CMD_SP";
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
@@ -90,7 +90,7 @@
   
         alt_sp: alt_sp {
             compatible = "zmk,behavior-hold-tap";
-            label="ALT_SP"
+            label="ALT_SP";
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
