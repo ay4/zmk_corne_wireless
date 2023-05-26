@@ -45,7 +45,7 @@
             #binding-cells = <0>;
             bindings
                 = <&kp LG(LA(N2))>
-                , <&tog RU>
+                , <&to RU>
                 ;
         };
 
@@ -55,7 +55,7 @@
             #binding-cells = <0>;
             bindings
                 = <&kp LG(LA(N1))>
-                , <&tog EN>
+                , <&to EN>
                 ;
         };
 
