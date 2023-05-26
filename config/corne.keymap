@@ -76,7 +76,7 @@
         // 
         // Mod-Special: Key if tapped,
         // macro (to switch to another layer possibly)
-        // if held
+        // if held. Yeah.
         //    
         cmd_sp: cmd_sp {
             compatible = "zmk,behavior-hold-tap";
