@@ -51,6 +51,7 @@
             label = "cmd_qwerty";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <20>;
             bindings
                 = <&macro_press &kp LCMD &mo QWE>
                 , <&macro_pause_for_release>
@@ -59,12 +60,13 @@
         };
 
         //
-        // Same for option
+        // Same for left Option
         //
         alt_qwerty: alt_qwerty {
             label = "alt_qwerty";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <20>;
             bindings
                 = <&macro_press &kp LALT &mo QWE>
                 , <&macro_pause_for_release>
@@ -74,7 +76,7 @@
     };
         behaviors {
         // 
-        // Mod-Special: Key if tapped,
+        // Mod-Specials: Cmd/Option if tapped,
         // macro (to switch to another layer possibly)
         // if held. Yeah.
         //    
