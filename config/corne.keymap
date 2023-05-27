@@ -10,7 +10,7 @@
                                                                                                                                                  ▄█                                 ██       
                                                                                                                                                ██▀                                ▄████▄     
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -49,9 +49,6 @@
 
 
 
-
-
-
 /*
 ███╗   ███╗ █████╗  ██████╗██████╗  ██████╗ ███████╗
 ████╗ ████║██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔════╝
@@ -63,11 +60,11 @@
 / {
         
         macros {
-        
-        // Press a hotkey to switch
+        //
+        // Below two press a hotkey to switch
         // to a different layout in OS
-        // and then toggle the language layer.
-
+        // and then toggle my keyboard language layer.
+        //
         to_ru: switch_to_ru {
             label = "switch_to_ru";
             compatible = "zmk,behavior-macro";
@@ -91,8 +88,11 @@
         };
 
         //
-        // Switches to the QWERTY layer with
-        // Left Command being held
+        // Switch to the QWERTY layer with
+        // Left Command / Left Option being held.
+        // I'm typing in an alt layout, but
+        // want my hotkeys to still be as if
+        // I'm pressing them in QWERTY.
         //
         cmd_qwerty: cmd_qwerty {
             label = "cmd_qwerty";
@@ -106,9 +106,6 @@
                 ;
         };
 
-        //
-        // Same for left Option
-        //
         alt_qwerty: alt_qwerty {
             label = "alt_qwerty";
             compatible = "zmk,behavior-macro";
@@ -137,9 +134,13 @@
 */
         behaviors {
         // 
-        // Mod-Specials: Cmd/Option if tapped,
-        // macro (to switch to another layer possibly)
-        // if held. Yeah.
+        // Tap-Hold: Macro if held,
+        // keycode if tapped. The macros
+        // in question press Command or Option
+        // and switch layer to QWERTY. I need this
+        // because I want all shortcuts to be in 
+        // the QWERTY layout so that my muscle memory
+        // isn't lost. 
         //    
         cmd_sp: cmd_sp {
             compatible = "zmk,behavior-hold-tap";
@@ -162,9 +163,10 @@
         };
 
         //
-        // Sutom special: switches to layer when held,
-        // presses a button when pressed. Needed only to
-        // customize parameters
+        // Custom Layer-Tap: switches to layer when held,
+        // presses a button when pressed. ZMK has this
+        // by default (called &lt), but I duplicate it
+        // because I want to play with tapping terms and such.
         //
         lt_cust: lt_cust {
             compatible = "zmk,behavior-hold-tap";
@@ -177,7 +179,10 @@
         };
 
         //
-        // Same as lt_cust but with macros
+        // Same as lt_cust, but calls macros when held.
+        // I use this to switch between languages. I wrote
+        // language-switching macros that (a) switch my active
+        // layer; (b) switch the OS language.
         //
         hold_ru: hold_ru {
             compatible = "zmk,behavior-hold-tap";
