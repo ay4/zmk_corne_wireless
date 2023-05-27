@@ -27,6 +27,7 @@
             label = "switch_to_ru";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <20>;
             bindings
                 = <&kp LG(LA(N2))>
                 , <&to RU>
@@ -37,6 +38,7 @@
             label = "switch_to_en";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <20>;
             bindings
                 = <&kp LG(LA(N1))>
                 , <&to EN>
