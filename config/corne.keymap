@@ -16,23 +16,7 @@
 #define QWE 4
 
 / {
-        combos {
-        compatible = "zmk,combos";
         
-        // Press iea to switch to English
-        combo_to_en {
-            timeout-ms = <50>;
-            key-positions = <14 15 16>;
-            bindings = <&kp LC(SPACE) &tog EN>;
-        };
-        
-        // Press hts to switch to Russian
-        combo_to_ru {
-            timeout-ms = <50>;
-            key-positions = <19 20 21>;
-            bindings = <&kp LC(SPACE) &tog RU>;
-        };
-    };
         macros {
         
         // Press a hotkey to switch
