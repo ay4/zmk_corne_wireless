@@ -152,6 +152,29 @@
                 , <&macro_tap &kp LC(SPACE)>
                 ;
         };
+        
+        //
+        // Convenience macros:
+        // switching tabs left and right
+        //
+        tab_l: tab_l {
+            label = "tab_l";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            bindings
+                = <&macro_tap &kp LG(LS(LBKT))>
+                ;
+        };        
+        tab_r: tab_r {
+            label = "tab_r";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            bindings
+                = <&macro_tap &kp LG(LS(RBKT))>
+                ;
+        };  
     };
 
 
@@ -169,6 +192,10 @@
 */
         behaviors {
         // 
+        // CMD_SP AND ALT_SP ARE DEPRECATED
+        // AND AREN'T USED IN THIS KEYMAP    
+        // LEAVING JUST FYI    
+        //    
         // Tap-Hold: Macro if held,
         // keycode if tapped. The macros
         // in question press Command or Option
@@ -248,7 +275,7 @@
             compatible = "zmk,behavior-hold-tap";
             label="hold_sym_l";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "hold-preferred";
             tapping-term-ms = <250>;
             quick-tap-ms = <125>;
             bindings = <&en_sym_l>, <&kp>;
@@ -257,7 +284,7 @@
             compatible = "zmk,behavior-hold-tap";
             label="hold_sym_r";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "hold-preferred";
             tapping-term-ms = <250>;
             quick-tap-ms = <125>;
             bindings = <&en_sym_r>, <&kp>;
@@ -404,11 +431,11 @@
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │   /   │   !   │   ]   │   *   │   %   │  BT3  │░
+│       │       │       │ p_tab │   ↑   │ n_tab │░                       │   /   │   !   │   ]   │   *   │   %   │  BT3  │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │   :   │   .   │   )   │  >>   │   &   │  BT4  │░
+│       │       │       │   ←   │   ↓   │   →   │░                       │   :   │   .   │   )   │  >>   │   &   │  BT4  │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
@@ -427,9 +454,9 @@
 */   
 
                         bindings = <
-   &none  &none  &none  &none  &none  &none                   &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR &kp PRCNT   &bt BT_SEL 2
-   &none  &none  &none  &none  &none  &none                   &kp COLON  &kp DOT    &kp RPAR  &none    &kp AMPS    &bt BT_SEL 3
-   &none  &none  &none  &none  &none  &none                   &kp TILDE  &kp QMARK  &kp RBRC  &kp GT   &kp EQUAL   &bt BT_SEL 4
+   &none  &none  &none  &tab_l    &kp UP    &tab_r                   &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR &kp PRCNT   &bt BT_SEL 2
+   &none  &none  &none  &kp LEFT  &kp DOWN  &kp RIGHT                   &kp COLON  &kp DOT    &kp RPAR  &none    &kp AMPS    &bt BT_SEL 3
+   &none  &none  &none  &none     &none     &none                   &kp TILDE  &kp QMARK  &kp RBRC  &kp GT   &kp EQUAL   &bt BT_SEL 4
 
                                      &none &none &none          &kp RET &none &none
                         >;
