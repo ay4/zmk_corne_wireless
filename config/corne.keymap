@@ -171,39 +171,6 @@
 ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝
 */
         behaviors {
-        // 
-        // CMD_SP AND ALT_SP ARE DEPRECATED
-        // AND AREN'T USED IN THIS KEYMAP    
-        // LEAVING JUST FYI    
-        //    
-        // Tap-Hold: Macro if held,
-        // keycode if tapped. The macros
-        // in question press Command or Option
-        // and switch layer to QWERTY. I need this
-        // because I want all shortcuts to be in 
-        // the QWERTY layout so that my muscle memory
-        // isn't lost. 
-        //    
-        cmd_sp: cmd_sp {
-            compatible = "zmk,behavior-hold-tap";
-            label="CMD_SP";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <125>;
-            bindings = <&cmd_qwerty>, <&kp>;
-        };
-  
-        alt_sp: alt_sp {
-            compatible = "zmk,behavior-hold-tap";
-            label="ALT_SP";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <125>;
-            bindings = <&alt_qwerty>, <&kp>;
-        };
-
         //
         // Custom Layer-Tap: switches to layer when held,
         // presses a button when pressed. ZMK has this
