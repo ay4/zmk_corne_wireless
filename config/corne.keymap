@@ -42,9 +42,11 @@
 
 #define EN  0
 #define RU  1
-#define SYM 2
-#define NUM 3
+#define SYM_L 2
+#define SYM_R 3
 #define QWE 4
+#define NAV 5
+#define NUM 6
 
 
 
@@ -115,6 +117,35 @@
                 = <&macro_press &mo QWE &kp LALT>
                 , <&macro_pause_for_release>
                 , <&macro_release &mo QWE &kp LALT>
+                ;
+        };
+        //
+        // Switch to layers while
+        // switching languages for
+        // the duration of the layer. Lets me
+        // get symbols from the Latin layer
+        // while being in the Russian layout.
+        //
+        en_sym_l: en_sym_l {
+            label = "en_sym_l";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            bindings
+                = <&macro_press &kp LC(SPACE) &mo SYM_L>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp LC(SPACE) &mo SYM_L>
+                ;
+        };
+        en_sym_r: en_sym_r {
+            label = "en_sym_r";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            bindings
+                = <&macro_press &kp LC(SPACE) &mo SYM_R>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp LC(SPACE) &mo SYM_R>
                 ;
         };
     };
@@ -204,6 +235,30 @@
             bindings = <&to_en>, <&kp>;
         };
 
+        //
+        // These two are used to go to English symbol layers
+        // when being held in the Russian layout and produce
+        // keypresses if they're tapped, not held.
+        //
+        hold_sym_l: hold_sym_l {
+            compatible = "zmk,behavior-hold-tap";
+            label="hold_sym_l";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <125>;
+            bindings = <&en_sym_l>, <&kp>;
+        };
+        hold_sym_r: hold_sym_r {
+            compatible = "zmk,behavior-hold-tap";
+            label="hold_sym_r";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <125>;
+            bindings = <&en_sym_r>, <&kp>;
+        };
+
     };
 
 
@@ -236,9 +291,9 @@
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
-                                │   ⌥   │   ⌘   ││  SYM  │░     │  NUM  │░│       │       │░                               
-                                │  ---  │  ---  ││  ---  │░     │  ---  │░│   ←   │   →   │░                               
-                                │   ↑   │   ↓   ││ space │░     │ bkspc │░│       │       │░                               
+                                │       │       ││ SYM_R │░     │ SYM_L │░│       │       │░                               
+                                │   ⌥   │   ⌘   ││  ---  │░     │  ---  │░│  NAV  │  NUM  │░                               
+                                │       │       ││ space │░     │ bkspc │░│       │       │░                               
                                 └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
                                  ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
                                                  └───────┘░     └───────┘░                                                 
@@ -252,7 +307,7 @@
    &kp ESC        &kp C  &kp I  &kp E  &kp A  &none        &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
    &sk LSHFT      &kp G  &kp X  &kp J  &kp K  &none        &none  &kp R  &kp M  &kp F  &kp P  &sk LSHFT
 
-    &alt_sp 0 UP  &cmd_sp 0 DOWN  &lt_cust SYM SPACE        &lt_cust NUM BSPC &kp LEFT &kp RIGHT
+         &alt_qwerty  &cmd_qwerty  &lt_cust SYM_R SPACE        &lt_cust SYM_L BSPC  &mo NAV  &mo NUM
                         >;
                 };
 
@@ -268,7 +323,7 @@
 │  +++  │   Б   │   Ы   │   О   │   У   │   Э   │░                       │   Ц   │   Л   │   Д   │   З   │   Ъ   │  +++  │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
-│  EN   │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│  ENG  │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 │  ---  │   Ч   │   И   │   Е   │   А   │   Й   │░                       │   В   │   Ь   │   Т   │   С   │   Н   │   Ю   │░
 │  esc  │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
@@ -278,9 +333,9 @@
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
-                                │       │       ││       │░     │       │░│       │       │░                               
-                                │  +++  │  +++  ││  +++  │░     │  +++  │░│  +++  │  +++  │░                               
-                                │       │       ││       │░     │       │░│       │       │░                               
+                                │       │       ││ SYM_R │░     │ SYM_L │░│       │       │░                               
+                                │  +++  │  +++  ││  ---  │░     │  ---  │░│  +++  │  +++  │░                               
+                                │       │       ││ space │░     │ bkspc │░│       │       │░                               
                                 └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
                                  ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
                                                  └───────┘░     └───────┘░                                                 
@@ -292,35 +347,87 @@
    &hold_en 0 ESC  &kp X      &kp B  &kp T     &kp F  &kp Q           &kp D     &kp M  &kp N  &kp C  &kp Y     &kp GT
    &trans          &kp U      &kp I  &kp SEMI  &kp R  &kp O           &kp LBKT  &kp H  &kp V  &kp A  &kp G     &trans
 
-                                        &trans  &trans  &trans        &trans  &trans  &trans
+                            &trans  &trans  &hold_sym_r 0 SPACE        &hold_sym_l 0 BSPC  &trans  &trans
                         >;
                 };
 
-                symbol_layer {
-// -----------------------------------------------------------------------------------------
-// | BT CLR  |  $  |  _  |  [  |  -    | --   |   |   / |  !   |  ]  |  *  |  %  | BT CH 3 |
-// | BT CH 1 |  @  |  -- |  (  |  ,    |  ;   |   |  :  |  .   |  )  |  -- |  &  | BT CH 4 |
-// | BT CH 2 |  =  |  <  |  {  |  '    |  "   |   |   ~ |  ?   |  }  |  >  |  =  | BT CH 5 |
-//                       | XXX | XXX | XXX |   | RET | XXX  | XXX |
+
+
+
+
+
+                sym_left {
+/*
+┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│  BT X │   $   │   _   │   [   │   -   │ mdash │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│  BT1  │   @   │  <<   │   (   │   ,   │   ;   │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│  BT2  │   =   │   <   │   {   │   '   │   "   │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+└───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                                ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
+                                 ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
+                                                 └───────┘░     └───────┘░                                                 
+                                                  ░░░░░░░░░      ░░░░░░░░░                                                 
+*/    
+
+
                         bindings = <
-   &bt BT_CLR    &kp DLLR  &kp UNDER &kp LBKT &kp MINUS  &kp LA(LS(MINUS))       &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR &kp PRCNT   &bt BT_SEL 2
-   &bt BT_SEL 0  &kp AT    &none     &kp LPAR &kp COMMA  &kp SEMI                &kp COLON  &kp DOT    &kp RPAR  &none    &kp AMPS    &bt BT_SEL 3
-   &bt BT_SEL 1  &kp EQUAL &kp LT    &kp LBRC &kp APOS   &kp DQT                 &kp TILDE  &kp QMARK  &kp RBRC  &kp GT   &kp EQUAL   &bt BT_SEL 4
-                                         &none &none &none &kp RET &none &none
+   &bt BT_CLR    &kp DLLR  &kp UNDER &kp LBKT &kp MINUS  &kp LA(LS(MINUS))       &none  &none  &none  &none  &none  &none 
+   &bt BT_SEL 0  &kp AT    &none     &kp LPAR &kp COMMA  &kp SEMI                &none  &none  &none  &none  &none  &none 
+   &bt BT_SEL 1  &kp EQUAL &kp LT    &kp LBRC &kp APOS   &kp DQT                 &none  &none  &none  &none  &none  &none 
+                                         &none &none &none                    &none &none &none
                         >;
                 };
 
-                                num_layer {
-// -----------------------------------------------------------------------------------------
-// | ____   |  ____  |  ____ |  ____  | ____ | ___  |      | ___ | 1 | 2 | 3 | ___ | ___  |
-// | ____   |  ____  |  ____ |  ____  | ____ | ___  |      | ___ | 4 | 5 | 6 | ___ | ___  |
-// | ____   |  ____  |  ____ |  ____  | ____ | ___  |      | ___ | 7 | 8 | 9 | ___ | ___  |
-//                               | ___ | ___ |  ___ |      | ___ |  0  | 0 |
+
+
+
+
+
+                                sym_right {
+/*
+┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │   /   │   !   │   ]   │   *   │   %   │  BT3  │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │   :   │   .   │   )   │  >>   │   &   │  BT4  │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │   ~   │   ?   │   }   │   >   │   =   │  BT5  │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+└───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                                ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                │       │       ││       │░     │  RET  │░│       │       │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
+                                 ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
+                                                 └───────┘░     └───────┘░                                                 
+                                                  ░░░░░░░░░      ░░░░░░░░░                                                 
+*/   
+
                         bindings = <
-   &trans   &trans  &trans  &trans  &trans  &trans         &trans  &kp N1   &kp N2  &kp N3  &trans  &trans
-   &trans   &trans  &trans  &trans  &trans  &trans         &trans  &kp N4   &kp N5  &kp N6  &trans  &trans
-   &trans   &trans  &trans  &trans  &trans  &trans         &trans  &kp N7   &kp N8  &kp N9  &trans  &trans 
-                            &trans  &trans  &trans         &trans   &kp N0 &kp N0
+   &none  &none  &none  &none  &none  &none                   &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR &kp PRCNT   &bt BT_SEL 2
+   &none  &none  &none  &none  &none  &none                   &kp COLON  &kp DOT    &kp RPAR  &none    &kp AMPS    &bt BT_SEL 3
+   &none  &none  &none  &none  &none  &none                   &kp TILDE  &kp QMARK  &kp RBRC  &kp GT   &kp EQUAL   &bt BT_SEL 4
+
+                                     &none &none &none          &kp RET &none &none
                         >;
                 };
 
@@ -361,6 +468,86 @@
    &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B        &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &trans 
 
             &mt LALT UP  &mt LCMD DOWN   &trans        &trans  &trans   &trans
+                        >;
+                };
+
+
+
+
+
+
+                nav_layer {
+/*
+┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │   ↑   │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │   ←   │   ↓   │   →   │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+└───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                                ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
+                                 ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
+                                                 └───────┘░     └───────┘░                                                 
+                                                  ░░░░░░░░░      ░░░░░░░░░                                                 
+*/   
+
+                        bindings = <
+   &none  &none  &none  &none  &none  &none                   &none  &none     &kp UP    &none      &none  &none
+   &none  &none  &none  &none  &none  &none                   &none  &kp LEFT  &kp DOWN  &kp RIGHT  &none  &none
+   &none  &none  &none  &none  &none  &none                   &none  &none     &none     &none      &none  &none
+
+                                     &none &none &none          &none &none &none
+                        >;
+                };
+
+
+
+
+
+
+                num_layer {
+/*
+┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │   1   │   2   │   3   │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │   4   │   5   │   6   │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │   0   │   7   │   8   │   9   │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+└───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                                ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
+                                 ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
+                                                 └───────┘░     └───────┘░                                                 
+                                                  ░░░░░░░░░      ░░░░░░░░░                                                 
+*/   
+
+                        bindings = <
+   &none  &none  &none  &none  &none  &none                   &none  &none  &none   &kp N1  &kp N2  &kp N3
+   &none  &none  &none  &none  &none  &none                   &none  &none  &none   &kp N4  &kp N5  &kp N6
+   &none  &none  &none  &none  &none  &none                   &none  &none  &kp N0  &kp N7  &kp N8  &kp N9
+
+                                     &none &none &none          &none &none &none
                         >;
                 };
         };
