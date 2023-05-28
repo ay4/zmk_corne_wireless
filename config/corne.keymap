@@ -162,7 +162,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
-            tap-ms = <20>;
+            tap-ms = <0>;
             bindings
                 = <&macro_tap &kp LG(LS(LBKT))>
                 ;
@@ -172,7 +172,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
-            tap-ms = <20>;
+            tap-ms = <0>;
             bindings
                 = <&macro_tap &kp LG(LS(RBKT))>
                 ;
@@ -397,7 +397,7 @@
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  BT1  │   @   │  <<   │   (   │   ,   │   ;   │░                       │       │       │       │       │       │       │░
+│  BT1  │   @   │       │   (   │   ,   │   ;   │░                       │       │       │       │       │       │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
@@ -437,7 +437,7 @@
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │   ←   │   ↓   │   →   │░                       │   :   │   .   │   )   │  >>   │   &   │  BT4  │░
+│       │       │       │   ←   │   ↓   │   →   │░                       │   :   │   .   │   )   │       │   &   │  BT4  │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
@@ -457,8 +457,8 @@
 
                         bindings = <
    &none  &none  &none  &tab_l    &kp UP    &tab_r                   &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR &kp PRCNT   &bt BT_SEL 2
-   &none  &none  &none  &kp LEFT  &kp DOWN  &kp RIGHT                   &kp COLON  &kp DOT    &kp RPAR  &none    &kp AMPS    &bt BT_SEL 3
-   &none  &none  &none  &none     &none     &none                   &kp TILDE  &kp QMARK  &kp RBRC  &kp GT   &kp EQUAL   &bt BT_SEL 4
+   &none  &none  &none  &kp LEFT  &kp DOWN  &kp RIGHT                &kp COLON  &kp DOT    &kp RPAR  &none    &kp AMPS    &bt BT_SEL 3
+   &none  &none  &none  &none     &none     &none                    &kp TILDE  &kp QMARK  &kp RBRC  &kp GT   &kp EQUAL   &bt BT_SEL 4
 
                                      &none &none &none          &kp RET &none &none
                         >;
@@ -586,7 +586,18 @@
         };
 };
 
+
+
+
 /*
+
+▄▄▄▄▄▄▄▄▄ .• ▌ ▄ ·.  ▄▄▄·▄▄▌   ▄▄▄· ▄▄▄▄▄▄▄▄ .
+▀•██ ▀▀▄.▀··██ ▐███▪▐█ ▄███•  ▐█ ▀█ •██  ▀▄.▀·
+  ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█· ██▀·██ ▪ ▄█▀▀█  ▐█.▪▐▀▀▪▄
+  ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▪·•▐█▌ ▄▐█▪ ▐▌ ▐█▌·▐█▄▄▌
+  ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀.▀   .▀▀▀  ▀  ▀  ▀▀▀  ▀▀▀ 
+
+
 
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
