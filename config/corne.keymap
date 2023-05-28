@@ -132,9 +132,11 @@
             #binding-cells = <0>;
             wait-ms = <0>;
             bindings
-                = <&macro_press &kp LC(SPACE) &mo SYM_L>
+                = <&macro_tap &kp LC(SPACE)>
+                , <&macro_press &mo SYM_L>
                 , <&macro_pause_for_release>
-                , <&macro_release &kp LC(SPACE) &mo SYM_L>
+                , <&macro_release &mo SYM_L>
+                , <&macro_tap &kp LC(SPACE)>
                 ;
         };
         en_sym_r: en_sym_r {
@@ -143,9 +145,11 @@
             #binding-cells = <0>;
             wait-ms = <0>;
             bindings
-                = <&macro_press &kp LC(SPACE) &mo SYM_R>
+                = <&macro_tap &kp LC(SPACE)>
+                , <&macro_press &mo SYM_R>
                 , <&macro_pause_for_release>
-                , <&macro_release &kp LC(SPACE) &mo SYM_R>
+                , <&macro_release &mo SYM_R>
+                , <&macro_tap &kp LC(SPACE)>
                 ;
         };
     };
@@ -452,9 +456,9 @@
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
-                                │   ⌥   │   ⌘   ││       │░     │       │░│       │       │░                               
-                                │  ---  │  ---  ││  +++  │░     │  +++  │░│  +++  │  +++  │░                               
-                                │   ↑   │   ↓   ││       │░     │       │░│       │       │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                │   ⌥   │   ⌘   ││  +++  │░     │  +++  │░│  +++  │  +++  │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
                                 └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
                                  ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
                                                  └───────┘░     └───────┘░                                                 
@@ -467,7 +471,7 @@
    &trans     &kp A  &kp S  &kp D  &kp F  &kp G        &kp H  &kp J  &kp K      &kp L    &kp SEMI  &kp APOS
    &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B        &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &trans 
 
-            &mt LALT UP  &mt LCMD DOWN   &trans        &trans  &trans   &trans
+                     &kp LALT  &kp LCMD  &trans        &trans  &trans   &trans
                         >;
                 };
 
