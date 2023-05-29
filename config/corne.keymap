@@ -298,7 +298,7 @@
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  +++  │   Б   │   Ы   │   О   │   У   │   Э   │░                       │   Ц   │   Л   │   Д   │   З   │   Ъ   │  +++  │░
+│  +++  │   Б   │   Ы   │   О   │   У   │   Э   │░                       │   Ц   │   Л   │   Д   │   З   │   Я   │   Ъ   │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │  ENG  │       │       │       │       │       │░                       │       │       │       │       │       │       │░
@@ -321,7 +321,7 @@
 */                                                  
                         bindings = <
 
-   &trans          &kp COMMA  &kp S  &kp J     &kp E  &kp APOS        &kp W     &kp K  &kp L  &kp P  &kp RBKT  &trans
+   &trans          &kp COMMA  &kp S  &kp J     &kp E  &kp APOS        &kp W     &kp K  &kp L  &kp P  &kp Z     &kp RBKT
    &hold_en 0 ESC  &kp X      &kp B  &kp T     &kp F  &kp Q           &kp D     &kp M  &kp N  &kp C  &kp Y     &kp GT
    &trans          &kp U      &kp I  &kp SEMI  &kp R  &kp O           &kp LBKT  &kp H  &kp V  &kp A  &kp G     &trans
 
