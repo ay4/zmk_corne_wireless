@@ -21,7 +21,7 @@
    ██║   ╚██████╔╝██████╔╝╚██████╔╝███████║
    ╚═╝    ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝
 
-[ ] Command + Tab could be much better. Tab doesn't react too well
+[x] Command + Tab could be much better. Tab doesn't react too well
     because it waits for the resolution of tap and hold behaviour.
     Probably Tab should only be tab whereas the very rare ctrl should
     go someplace else.
@@ -300,13 +300,13 @@
                 default_layer {
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
-│ CTRL  │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  --   │   B   │   Y   │   O   │   U   │       │░                       │       │   L   │   D   │   W   │   Z   │       │░
-│  tab  │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│  tab  │   B   │   Y   │   O   │   U   │       │░                       │       │   L   │   D   │   W   │   Z   │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
-│       │       │       │       │       │       │░                       │       │       │       │       │       │  RUS  │░
-│  esc  │   C   │   I   │   E   │   A   │       │░                       │   V   │   H   │   T   │   S   │   N   │  ---  │░
-│       │       │       │       │       │       │░                       │       │       │       │       │       │   Q   │░
+│  CTRL │       │       │       │       │       │░                       │       │       │       │       │       │  RUS  │░
+│  ---  │   C   │   I   │   E   │   A   │       │░                       │   V   │   H   │   T   │   S   │   N   │  ---  │░
+│  esc  │       │       │       │       │       │░                       │       │       │       │       │       │   Q   │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │ stick │       │       │       │       │       │░                       │       │       │       │       │       │ stick │░
 │ shift │   G   │   X   │   J   │   K   │       │░                       │       │   R   │   M   │   F   │   P   │ shift │░
@@ -326,9 +326,9 @@
 
                         bindings = <
 
-   &mt LCTRL TAB  &kp B  &kp Y  &kp O  &kp U  &none                                    &none  &kp L  &kp D  &kp W  &kp Z  &none
-   &kp ESC        &kp C  &kp I  &kp E  &kp A  &none                                    &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
-   &sk LSHFT      &kp G  &kp X  &kp J  &kp K  &none                                    &none  &kp R  &kp M  &kp F  &kp P  &sk LSHFT
+   &kp TAB       &kp B  &kp Y  &kp O  &kp U  &none                                    &none  &kp L  &kp D  &kp W  &kp Z  &none
+   &mt LCTRL ESC &kp C  &kp I  &kp E  &kp A  &none                                    &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
+   &sk LSHFT     &kp G  &kp X  &kp J  &kp K  &none                                    &none  &kp R  &kp M  &kp F  &kp P  &sk LSHFT
 
                   &alt_qwerty  &cmd_qwerty  &lt_cust SYM_R SPACE             &kp BSPC  &mo NAV  &mo NUM
                         >;
@@ -445,9 +445,6 @@
                                  ░░░░░░░░░░░░░░░░│░░░░░░░│      │       │░ ░░░░░░░░░░░░░░░░░                               
                                                  └───────┘      └───────┘░                                                 
                                                                  ░░░░░░░░░                                                 
-
-←← = browser back
-→→ = browser forward
 
 */   
 
