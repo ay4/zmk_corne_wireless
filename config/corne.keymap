@@ -26,15 +26,15 @@
     Probably Tab should only be tab whereas the very rare ctrl should
     go someplace else.
 
-[ ] It's very uncomfortable that holding backspace doesn't result
+[x] It's very uncomfortable that holding backspace doesn't result
     in backspace being repeated. Probably any hold behaviour on 
     backspace should go and/or be replaced.
 
-[ ] It seems that splitting punctuation into two halves is a bad 
+[x] It seems that splitting punctuation into two halves is a bad 
     idea after all. It should probably be remapped onto just the
     left large button.
 
-[ ] Because of the abovementioned backspace issue, navigational
+[x] Because of the abovementioned backspace issue, navigational
     layer should probably be re-thought, and fast, before I get
     accustomed to it.
 
@@ -314,9 +314,9 @@
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
-                                │       │       ││ SYM_R │░     │ SYM_L │░│       │       │░                               
-                                │   ⌥   │   ⌘   ││  ---  │░     │  ---  │░│  NAV  │  NUM  │░                               
-                                │       │       ││ space │░     │ bkspc │░│       │       │░                               
+                                │       │       ││ SYM_R │░     │       │░│       │       │░                               
+                                │   ⌥   │   ⌘   ││  ---  │░     │ bkspc │░│  NAV  │  NUM  │░                               
+                                │       │       ││ space │░     │       │░│       │       │░                               
                                 └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
                                  ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
                                                  └───────┘░     └───────┘░                                                 
@@ -330,7 +330,7 @@
    &kp ESC        &kp C  &kp I  &kp E  &kp A  &none                                    &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
    &sk LSHFT      &kp G  &kp X  &kp J  &kp K  &none                                    &none  &kp R  &kp M  &kp F  &kp P  &sk LSHFT
 
-                  &alt_qwerty  &cmd_qwerty  &lt_cust SYM_R SPACE             &lt_cust SYM_L BSPC  &mo NAV  &mo NUM
+                  &alt_qwerty  &cmd_qwerty  &lt_cust SYM_R SPACE             &kp BSPC  &mo NAV  &mo NUM
                         >;
                 };
 
@@ -356,12 +356,12 @@
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
-                                │       │       ││ SYM_R │░     │ SYM_L │░│       │       │░                               
-                                │  +++  │  +++  ││  ---  │░     │  ---  │░│  +++  │  +++  │░                               
-                                │       │       ││ space │░     │ bkspc │░│       │       │░                               
+                                │       │       ││ SYM_R │░     │       │░│       │       │░                               
+                                │  +++  │  +++  ││  ---  │░     │ bkspc │░│  +++  │  +++  │░                               
+                                │       │       ││ space │░     │       │░│       │       │░                               
                                 └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
                                  ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
-                                                 └───────┘░     └───────┘░                                                 
+                                                 └───────┘░     └───────┘                                                        
                                                   ░░░░░░░░░      ░░░░░░░░░                                                 
 */                                                  
                         bindings = <
@@ -370,7 +370,7 @@
    &hold_en 0 ESC  &kp X      &kp B  &kp T     &kp F  &kp Q                             &kp D     &kp Y  &kp N  &kp C  &kp M  &kp DOT
    &trans          &kp U      &kp I  &kp SEMI  &kp R  &kp O                             &kp LBKT  &kp H  &kp V  &kp A  &kp G  &trans
 
-                            &trans  &trans  &hold_sym_r 0 SPACE                  &hold_sym_l 0 BSPC  &trans  &trans
+                            &trans  &trans  &hold_sym_r 0 SPACE                  &kp BSPC &trans  &trans
                         >;
                 };
 
@@ -383,35 +383,36 @@
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  BT X │   $   │   _   │   [   │   -   │ mdash │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  BT1  │   @   │   +   │   (   │   ,   │   ;   │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  BT2  │   =   │   <   │   {   │   '   │   "   │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                                ┌───────┬───────┐│       │░     │░░░░░░░│ ┌───────┬───────┐                                
-                                │       │       ││       │░     │░░░░░░░│ │       │       │░                               
-                                │  +++  │  +++  ││       │░     │░░░░░░░│ │       │       │░                               
-                                │       │       ││       │░     │░░░░░░░│ │       │       │░                               
-                                └───────┴───────┘│       │░     │░░░░░░░│ └───────┴───────┘░                               
-                                 ░░░░░░░░░░░░░░░░│       │░     │░░░░░░░│  ░░░░░░░░░░░░░░░░░                               
-                                                 └───────┘░     └───────┘                                                  
-                                                  ░░░░░░░░░                                                        
+                                ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                │       │       ││       │░     │       │░│       │       │░                               
+                                └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
+                                 ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
+                                                 └───────┘░     └───────┘░                                                      
+                                                  ░░░░░░░░░      ░░░░░░░░░                                                  
 */    
 
 
                         bindings = <
-   &bt BT_CLR    &kp DLLR   &kp UNDER  &kp LBKT &kp MINUS  &kp LA(LS(MINUS))                  &none     &none     &none   &none  &none  &none 
-   &bt BT_SEL 0  &kp AT     &kp PLUS   &kp LPAR &kp COMMA  &kp SEMI                           &none     &none     &none   &none  &none  &none 
-   &bt BT_SEL 1  &kp EQUAL  &kp LT     &kp LBRC &kp APOS   &kp DQT                            &none     &none     &none   &none  &none  &none 
 
-                                         &kp LALT  &kp LCMD &none                                &none &none &none
+   &none     &none     &none   &none  &none  &none                  &none     &none     &none   &none  &none  &none 
+   &none     &none     &none   &none  &none  &none                  &none     &none     &none   &none  &none  &none 
+   &none     &none     &none   &none  &none  &none                  &none     &none     &none   &none  &none  &none 
+
+                                         &none   &none  &none                                &none &none &none
                         >;
                 };
 
@@ -424,15 +425,15 @@
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │   /   │   !   │   ]   │   *   │   %   │  BT3  │░
+│  BT X │   $   │   _   │   [   │   -   │ mdash │░                       │   /   │   !   │   ]   │   *   │   %   │  BT3  │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │   :   │   .   │   )   │   #   │   &   │  BT4  │░
+│  BT1  │   @   │   +   │   (   │   ,   │   ;   │░                       │   :   │   .   │   )   │   #   │   &   │  BT4  │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │   ~   │   ?   │   }   │   >   │   =   │  BT5  │░
+│  BT2  │   =   │   <   │   {   │   '   │   "   │░                       │   ~   │   ?   │   }   │   >   │   =   │  BT5  │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -451,11 +452,11 @@
 */   
 
                         bindings = <
-   &none  &none  &none  &none  &none &none             &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR  &kp PRCNT  &bt BT_SEL 2
-   &none  &none  &none  &none  &none &none             &kp COLON  &kp DOT    &kp RPAR  &kp HASH  &kp AMPS   &bt BT_SEL 3
-   &none  &none  &none  &none  &none &none             &kp TILDE  &kp QMARK  &kp RBRC  &kp GT    &kp EQUAL  &bt BT_SEL 4
+   &bt BT_CLR    &kp DLLR   &kp UNDER  &kp LBKT &kp MINUS  &kp LA(LS(MINUS))    &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR  &kp PRCNT  &bt BT_SEL 2
+   &bt BT_SEL 0  &kp AT     &kp PLUS   &kp LPAR &kp COMMA  &kp SEMI             &kp COLON  &kp DOT    &kp RPAR  &kp HASH  &kp AMPS   &bt BT_SEL 3
+   &bt BT_SEL 1  &kp EQUAL  &kp LT     &kp LBRC &kp APOS   &kp DQT              &kp TILDE  &kp QMARK  &kp RBRC  &kp GT    &kp EQUAL  &bt BT_SEL 4
 
-                                     &none &none &none          &kp RET &none &none
+                                     &none &none &none                        &kp RET &none &none
                         >;
                 };
 
