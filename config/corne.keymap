@@ -393,11 +393,11 @@
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │ p_tab │   ↑   │ n_tab │       │░                       │   /   │   !   │   ]   │   *   │   %   │  BT3  │░
+│       │       │       │       │       │       │░                       │   /   │   !   │   ]   │   *   │   %   │  BT3  │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │  ←←   │   ↓   │   →→  │       │░                       │   :   │   .   │   )   │   #   │   &   │  BT4  │░
+│       │       │       │       │       │       │░                       │   :   │   .   │   )   │   #   │   &   │  BT4  │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
@@ -420,9 +420,9 @@
 */   
 
                         bindings = <
-   &none  &none  &tab_l        &kp UP    &tab_r       &none             &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR  &kp PRCNT  &bt BT_SEL 2
-   &none  &none  &kp LG(LBKT)  &kp DOWN  &kp LG(RBKT) &none             &kp COLON  &kp DOT    &kp RPAR  &kp HASH  &kp AMPS   &bt BT_SEL 3
-   &none  &none  &none         &none     &none        &none             &kp TILDE  &kp QMARK  &kp RBRC  &kp GT    &kp EQUAL  &bt BT_SEL 4
+   &none  &none  &none  &none  &none &none             &kp FSLH   &kp EXCL   &kp RBKT  &kp STAR  &kp PRCNT  &bt BT_SEL 2
+   &none  &none  &none  &none  &none &none             &kp COLON  &kp DOT    &kp RPAR  &kp HASH  &kp AMPS   &bt BT_SEL 3
+   &none  &none  &none  &none  &none &none             &kp TILDE  &kp QMARK  &kp RBRC  &kp GT    &kp EQUAL  &bt BT_SEL 4
 
                                      &none &none &none          &kp RET &none &none
                         >;
