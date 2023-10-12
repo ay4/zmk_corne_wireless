@@ -14,6 +14,37 @@
 
 
 
+████████╗ ██████╗ ██████╗  ██████╗ ███████╗
+╚══██╔══╝██╔═══██╗██╔══██╗██╔═══██╗██╔════╝
+   ██║   ██║   ██║██║  ██║██║   ██║███████╗
+   ██║   ██║   ██║██║  ██║██║   ██║╚════██║
+   ██║   ╚██████╔╝██████╔╝╚██████╔╝███████║
+   ╚═╝    ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝
+
+[ ] Command + Tab could be much better. Tab doesn't react too well
+    because it waits for the resolution of tap and hold behaviour.
+    Probably Tab should only be tab whereas the very rare ctrl should
+    go someplace else.
+
+[ ] It's very uncomfortable that holding backspace doesn't result
+    in backspace being repeated. Probably any hold behaviour on 
+    backspace should go and/or be replaced.
+
+[ ] It seems that splitting punctuation into two halves is a bad 
+    idea after all. It should probably be remapped onto just the
+    left large button.
+
+[ ] Because of the abovementioned backspace issue, navigational
+    layer should probably be re-thought, and fast, before I get
+    accustomed to it.
+
+[ ] Need a proper readme
+
+[ ] Need a more general description of keyboard functioning on the
+    mac, including things like Vimari, window management and such
+
+
+
 
 ██╗███╗   ██╗ ██████╗██╗     ██╗   ██╗██████╗ ███████╗███████╗
 ██║████╗  ██║██╔════╝██║     ██║   ██║██╔══██╗██╔════╝██╔════╝
@@ -352,11 +383,11 @@
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  BT X │   $   │   _   │   [   │   -   │ mdash │░                       │       │       │   ↑   │       │       │       │░
+│  BT X │   $   │   _   │   [   │   -   │ mdash │░                       │       │       │       │       │       │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  BT1  │   @   │   +   │   (   │   ,   │   ;   │░                       │       │   ←   │   ↓   │   →   │       │       │░
+│  BT1  │   @   │   +   │   (   │   ,   │   ;   │░                       │       │       │       │       │       │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
@@ -376,9 +407,9 @@
 
 
                         bindings = <
-   &bt BT_CLR    &kp DLLR   &kp UNDER  &kp LBKT &kp MINUS  &kp LA(LS(MINUS))                  &none     &none     &kp UP    &none      &none  &none 
-   &bt BT_SEL 0  &kp AT     &kp PLUS   &kp LPAR &kp COMMA  &kp SEMI                           &none     &kp LEFT  &kp DOWN  &kp RIGHT  &none  &none 
-   &bt BT_SEL 1  &kp EQUAL  &kp LT     &kp LBRC &kp APOS   &kp DQT                            &none     &none     &none     &none      &none  &none 
+   &bt BT_CLR    &kp DLLR   &kp UNDER  &kp LBKT &kp MINUS  &kp LA(LS(MINUS))                  &none     &none     &none   &none  &none  &none 
+   &bt BT_SEL 0  &kp AT     &kp PLUS   &kp LPAR &kp COMMA  &kp SEMI                           &none     &none     &none   &none  &none  &none 
+   &bt BT_SEL 1  &kp EQUAL  &kp LT     &kp LBRC &kp APOS   &kp DQT                            &none     &none     &none   &none  &none  &none 
 
                                          &kp LALT  &kp LCMD &none                                &none &none &none
                         >;
@@ -477,15 +508,15 @@
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │  ⌘←   │  ⌥←   │   ↑   │  ⌥→   │  ⌘→   │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │       │       │       │       │       │░                       │  ⇧←   │   ←   │   ↓   │   →   │  ⇧→   │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │ norm. │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│ shift │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│ shift │       │       │       │       │       │░                       │       │  ⇧⌥←  │       │  ⇧⌥→  │       │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -500,9 +531,9 @@
 */   
 
                         bindings = <
-   &none      &none  &none  &none  &none  &none                                     &none  &none  &none     &kp UP    &none      &none
-   &none      &none  &none  &none  &none  &none                                     &none  &none  &kp LEFT  &kp DOWN  &kp RIGHT  &none
-   &kp LSHFT  &none  &none  &none  &none  &none                                     &none  &none  &none     &none     &none      &none
+   &none      &none  &none  &none  &none  &none                                     &kp LG(LEFT) &kp LA(LEFT)     &kp UP    &kp LA(RIGHT)     &kp LG(RIGHT) &none
+   &none      &none  &none  &none  &none  &none                                     &kp LS(LEFT) &kp LEFT         &kp DOWN  &kp RIGHT         &kp LS(RIGHT) &none 
+   &kp LSHFT  &none  &none  &none  &none  &none                                     &none        &kp LS(LA(LEFT)) &none     &kp LS(LA(RIGHT)) &none         &none
 
                               &kp LALT  &kp LCMD  &none                           &none &none &none
                         >;
