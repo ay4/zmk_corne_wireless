@@ -111,111 +111,34 @@
 / {
     combos {
 
-    
-        compatible = "zmk,combos";
-        combo_1 {
-            timeout-ms = <100>;
-            key-positions = <0 1 2>;
-            bindings = <&kp A>;
-        };
-    
-
-        compatible = "zmk,combos";
-        combo_2 {
-            timeout-ms = <100>;
-            key-positions = <3 4 5>;
-            bindings = <&kp B>;
-        };
-
-        compatible = "zmk,combos";
-        combo_3 {
-            timeout-ms = <100>;
-            key-positions = <6 7 8>;
-            bindings = <&kp C>;
-        };
-
-        compatible = "zmk,combos";
-        combo_4 {
-            timeout-ms = <100>;
-            key-positions = <9 10 11>;
-            bindings = <&kp D>;
-        };
-    
-    
-        compatible = "zmk,combos";
-        combo_5 {
-            timeout-ms = <100>;
-            key-positions = <12 13 14>;
-            bindings = <&kp E>;
-        };
-    
-
+        //
+        // Three buttons in the home position
+        // on the left produce a combo that
+        // presses command-shift-space, which
+        // produces hint mode on macos via
+        // an app called HomeRow
+        //
         compatible = "zmk,combos";
         combo_6 {
             timeout-ms = <100>;
-            key-positions = <15 16 17>;
-            bindings = <&kp F>;
+            key-positions = <14 15 16>;
+            bindings = <&kp LG(LS(SPACE))>;
         };
 
+        //
+        // Three buttons in the home
+        // position on the right produces
+        // command-shift-J which turns on
+        // scroll mode in HomeRow
+        //
         compatible = "zmk,combos";
         combo_7 {
             timeout-ms = <100>;
-            key-positions = <18 19 20>;
-            bindings = <&kp G>;
+            key-positions = <19 20 21>;
+            bindings = <&kp LG(LS(J))>;
         };
 
-        compatible = "zmk,combos";
-        combo_8 {
-            timeout-ms = <100>;
-            key-positions = <21 22 23>;
-            bindings = <&kp H>;
-        };
-
-        compatible = "zmk,combos";
-        combo_9 {
-            timeout-ms = <100>;
-            key-positions = <24 25 26>;
-            bindings = <&kp I>;
-        };
-    
-
-        compatible = "zmk,combos";
-        combo_10 {
-            timeout-ms = <100>;
-            key-positions = <27 28 29>;
-            bindings = <&kp J>;
-        };
-
-        compatible = "zmk,combos";
-        combo_11 {
-            timeout-ms = <100>;
-            key-positions = <30 31 32>;
-            bindings = <&kp K>;
-        };
-
-        compatible = "zmk,combos";
-        combo_12 {
-            timeout-ms = <100>;
-            key-positions = <33 34 35>;
-            bindings = <&kp L>;
-        };
-    
-    
-        compatible = "zmk,combos";
-        combo_13 {
-            timeout-ms = <100>;
-            key-positions = <36 37 38>;
-            bindings = <&kp M>;
-        };
-    
-
-        compatible = "zmk,combos";
-        combo_14 {
-            timeout-ms = <100>;
-            key-positions = <39 40 41>;
-            bindings = <&kp N>;
-        };
-
+ 
 
     };
 };
