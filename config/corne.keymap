@@ -575,9 +575,9 @@
 │       │  sml  │  lft  │ centr │  rht  │  sml  │░                       │  ⌥←   │   ←   │   ↓   │   →   │  ⌥→   │       │░
 │       │  mid  │  hlf  │       │  hlf  │downrht│░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
-│ norm. │ windw │ windw │       │ windw │       │░                       │       │ windw │ windw │       │       │       │░
-│ shift │  sml  │ dnlft │       │ dnrht │       │░                       │       │  sml  │  sml  │       │       │       │░
-│       │  dwn  │ qartr │       │ qartr │       │░                       │       │ctr-lft│ctr-rht│       │       │       │░
+│ norm. │ windw │ windw │       │ windw │       │░                       │       │ windw │ windw │ windw │       │       │░
+│ shift │  sml  │ dnlft │       │ dnrht │       │░                       │       │  sml  │ hide  │  sml  │       │       │░
+│       │  dwn  │ qartr │       │ qartr │       │░                       │       │ctr-lft│       │ctr-rht│       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
@@ -591,9 +591,9 @@
 */   
 
                         bindings = <
-   &none      &meh N1  &meh Q  &meh W  &meh E  &meh N9                     &none         &kp LG(LS(LBKT))  &kp UP      &kp LG(LS(RBKT))  &none         &none
-   &none      &meh N2  &meh A  &meh S  &meh D  &meh N0                     &kp LA(LEFT)  &kp LEFT          &kp DOWN    &kp RIGHT         &kp LA(RIGHT) &none 
-   &kp LSHFT  &meh N3  &meh Z  &none   &meh X  &none                       &none         &meh LEFT         &meh RIGHT  &none             &none         &none
+   &none      &meh N1  &meh Q  &meh W  &meh E  &meh N9                     &none         &kp LG(LS(LBKT))  &kp UP     &kp LG(LS(RBKT))  &none         &none
+   &none      &meh N2  &meh A  &meh S  &meh D  &meh N0                     &kp LA(LEFT)  &kp LEFT          &kp DOWN   &kp RIGHT         &kp LA(RIGHT) &none 
+   &kp LSHFT  &meh N3  &meh Z  &none   &meh X  &none                       &none         &meh LEFT         &kp LG(H)  &meh RIGHT        &none         &none
 
                               &kp LALT  &kp LCMD  &meh SPACE          &none &none &none
                         >;
