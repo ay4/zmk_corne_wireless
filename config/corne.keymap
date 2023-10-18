@@ -162,7 +162,7 @@
             = 
             <&macro_press &kp LCTRL>,
             <&macro_press &kp LSHFT>,
-            <&macro_press &kp LCMD,
+            <&macro_press &kp LCMD>,
             <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
             <&macro_release &kp LCMD>,
             <&macro_release &kp LSHFT>,
