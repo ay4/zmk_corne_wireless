@@ -546,15 +546,15 @@
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │  ⌘←   │  ⌥←   │   ↑   │  ⌥→   │  ⌘→   │       │░
+│       │       │       │       │       │       │░                       │       │ Tab←  │   ↑   │ Tab→  │       │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │  ⇧←   │   ←   │   ↓   │   →   │  ⇧→   │       │░
+│       │       │       │       │       │       │░                       │  ⌥←   │   ←   │   ↓   │   →   │  ⌥→   │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │ norm. │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│ shift │       │       │       │       │       │░                       │       │  ⇧⌥←  │       │  ⇧⌥→  │       │       │░
+│ shift │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -569,11 +569,11 @@
 */   
 
                         bindings = <
-   &none      &none  &none  &none  &none  &none                                     &kp LG(LEFT) &kp LA(LEFT)     &kp UP    &kp LA(RIGHT)     &kp LG(RIGHT) &none
-   &none      &none  &none  &none  &none  &none                                     &kp LS(LEFT) &kp LEFT         &kp DOWN  &kp RIGHT         &kp LS(RIGHT) &none 
-   &kp LSHFT  &none  &none  &none  &none  &none                                     &none        &kp LS(LA(LEFT)) &none     &kp LS(LA(RIGHT)) &none         &none
+   &none      &none  &none  &none  &none  &none                      &none         &kp LG(LS(LBKT))  &kp UP    &kp LG(LS(RBKT))  &none         &none
+   &none      &none  &none  &none  &none  &none                      &kp LA(LEFT)  &kp LEFT          &kp DOWN  &kp RIGHT         &kp LA(RIGHT) &none 
+   &kp LSHFT  &none  &none  &none  &none  &none                      &none         &none             &none     &none             &none         &none
 
-                              &kp LALT  &kp LCMD  &none                           &none &none &none
+                              &kp LALT  &kp LCMD  &none           &none &none &none
                         >;
                 };
 
