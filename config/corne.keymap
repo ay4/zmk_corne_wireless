@@ -567,35 +567,35 @@
                 nav_layer {
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐ 
-│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │       │ Tab←  │   ↑   │ Tab→  │       │       │░
-│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │ windw │ windw │ windw │ windw │ windw │░                       │       │       │       │       │       │       │░
+│       │  sml  │ uplft │  max  │ uprht │  sml  │░                       │       │ Tab←  │   ↑   │ Tab→  │       │       │░
+│       │   up  │ qartr │       │ qartr │ uprht │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
-│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │  ⌥←   │   ←   │   ↓   │   →   │  ⌥→   │       │░
-│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│       │ windw │ windw │ windw │ windw │ windw │░                       │       │       │       │       │       │       │░
+│       │  sml  │  lft  │ centr │  rht  │  sml  │░                       │  ⌥←   │   ←   │   ↓   │   →   │  ⌥→   │       │░
+│       │  mid  │  hlf  │       │  hlf  │downrht│░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
-│ norm. │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│ shift │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│ norm. │ windw │ windw │       │ windw │       │░                       │       │       │       │       │       │       │░
+│ shift │  sml  │ dnlft │       │ dnrht │       │░                       │       │       │       │       │       │       │░
+│       │  dwn  │ qartr │       │ qartr │       │░                       │       │       │       │       │       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐                                
-                                │       │       ││       │░     │       │░│░░░░░░░│       │░                               
+                                │       │       ││ windw │░     │       │░│░░░░░░░│       │░                               
                                 │   ⌥   │   ⌘   ││       │░     │       │░│░░░░░░░│       │░                               
-                                │       │       ││       │░     │       │░│░░░░░░░│       │░                               
-                                └───────┴───────┘│       │░     │       │░└───────┴───────┘░                               
+                                │       │       ││ centr │░     │       │░│░░░░░░░│       │░                               
+                                └───────┴───────┘│ alize │░     │       │░└───────┴───────┘░                               
                                  ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░                               
                                                  └───────┘░     └───────┘░                                                 
                                                   ░░░░░░░░░      ░░░░░░░░░                                                 
 */   
 
                         bindings = <
-   &none      &none  &none  &none  &none  &none                      &none         &kp LG(LS(LBKT))  &kp UP    &kp LG(LS(RBKT))  &none         &none
-   &none      &none  &none  &none  &none  &none                      &kp LA(LEFT)  &kp LEFT          &kp DOWN  &kp RIGHT         &kp LA(RIGHT) &none 
-   &kp LSHFT  &none  &none  &none  &none  &none                      &none         &none             &none     &none             &none         &none
+   &none      &meh N1  &meh Q  &meh W  &meh E  &meh N9                     &none         &kp LG(LS(LBKT))  &kp UP    &kp LG(LS(RBKT))  &none         &none
+   &none      &meh N2  &meh A  &meh S  &meh D  &meh N0                     &kp LA(LEFT)  &kp LEFT          &kp DOWN  &kp RIGHT         &kp LA(RIGHT) &none 
+   &kp LSHFT  &meh N3  &meh Z  &none   &meh X  &none                       &none         &none             &none     &none             &none         &none
 
-                              &kp LALT  &kp LCMD  &none           &none &none &none
+                              &kp LALT  &kp LCMD  &meh SPACE          &none &none &none
                         >;
                 };
 
