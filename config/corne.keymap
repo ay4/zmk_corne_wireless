@@ -21,22 +21,7 @@
    ██║   ╚██████╔╝██████╔╝╚██████╔╝███████║
    ╚═╝    ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝
 
-[x] Command + Tab could be much better. Tab doesn't react too well
-    because it waits for the resolution of tap and hold behaviour.
-    Probably Tab should only be tab whereas the very rare ctrl should
-    go someplace else.
-
-[x] It's very uncomfortable that holding backspace doesn't result
-    in backspace being repeated. Probably any hold behaviour on 
-    backspace should go and/or be replaced.
-
-[x] It seems that splitting punctuation into two halves is a bad 
-    idea after all. It should probably be remapped onto just the
-    left large button.
-
-[x] Because of the abovementioned backspace issue, navigational
-    layer should probably be re-thought, and fast, before I get
-    accustomed to it.
+[ ] Transfer window management to QMK
 
 [ ] Need a button (capslock or the like) to change window position
     and generally redesign the window positioning system.   
@@ -147,27 +132,6 @@
 / {
         
         macros {
-        
-        //
-        // A macro to implement the control-shift-command 
-        // seqence. Use it like so: &meh A to get A with
-        // all these modifiers.
-       //
-
-        meh: the_meh_button {
-            label = "The MEH button";
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings 
-            = 
-            <&macro_press &kp LCTRL>,
-            <&macro_press &kp LSHFT>,
-            <&macro_press &kp LCMD>,
-            <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
-            <&macro_release &kp LCMD>,
-            <&macro_release &kp LSHFT>,
-            <&macro_release &kp LCTRL>; 
-        };
 
         //
         // Below two press a hotkey to switch
@@ -591,11 +555,11 @@
 */   
 
                         bindings = <
-   &none      &meh N1  &meh Q  &meh W  &meh E  &meh N9                     &none         &kp LG(LS(LBKT))  &kp UP     &kp LG(LS(RBKT))  &none         &none
-   &none      &meh N2  &meh A  &meh S  &meh D  &meh N0                     &kp LA(LEFT)  &kp LEFT          &kp DOWN   &kp RIGHT         &kp LA(RIGHT) &none 
-   &kp LSHFT  &meh N3  &meh Z  &none   &meh X  &none                       &none         &meh LEFT         &kp LG(H)  &meh RIGHT        &none         &none
+   &none      &kp LG(LS(LC(N1)))  &kp LG(LS(LC(Q)))  &kp LG(LS(LC(W)))  &kp LG(LS(LC(E)))  &kp LG(LS(LC(N9)))      &none         &kp LG(LS(LBKT))  &kp UP     &kp LG(LS(RBKT))  &none         &none
+   &none      &kp LG(LS(LC(N2)))  &kp LG(LS(LC(A)))  &kp LG(LS(LC(S)))  &kp LG(LS(LC(D)))  &kp LG(LS(LC(N0)))      &kp LA(LEFT)  &kp LEFT          &kp DOWN   &kp RIGHT         &kp LA(RIGHT) &none 
+   &kp LSHFT  &kp LG(LS(LC(N3)))  &kp LG(LS(LC(Z)))  &none   &kp LG(LS(LC(X)))  &none                &none         &kp LG(LS(LC(LEFT)))         &kp LG(H)  &kp LG(LS(LC(RIGHT)))        &none         &none
 
-                              &kp LALT  &kp LCMD  &meh SPACE          &none &none &none
+                              &kp LALT  &kp LCMD  &kp LG(LS(LC(SPACE)))          &none &none &none
                         >;
                 };
 
