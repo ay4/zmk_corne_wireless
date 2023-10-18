@@ -147,6 +147,18 @@
 / {
         
         macros {
+        
+        //
+        // A macro to implement the control-shift-command 
+        // seqence. Use it like so: &meh A to get A with
+        // all these modifiers.
+        //
+        meh: the_meh_button {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>; // Must be 1
+            bindings = <&macro_param_1to1 LG(LS(LC(MACRO_PLACEHOLDER)))>; 
+        };
+
         //
         // Below two press a hotkey to switch
         // to a different layout in OS
@@ -239,7 +251,7 @@
             bindings
                 = <&macro_tap &kp LG(LS(RBKT))>
                 ;
-        )  
+        ) 
     };
 
 
