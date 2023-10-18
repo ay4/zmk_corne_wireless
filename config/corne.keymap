@@ -153,14 +153,17 @@
         // seqence. Use it like so: &meh A to get A with
         // all these modifiers.
        //
+
         meh: the_meh_button {
             compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>; // Must be 1
+            #binding-cells = <1>;
+            compatible = "zmk,behavior-macro-one-param";
             bindings 
-            = <&macro_press &kp LCTRL>,
+            = 
+            <&macro_press &kp LCTRL>,
             <&macro_press &kp LSHFT>,
             <&macro_press &kp LCMD,
-            <&macro_param_1to1 MACRO_PLACEHOLDER>,
+            <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
             <&macro_release &kp LCMD>,
             <&macro_release &kp LSHFT>,
             <&macro_release &kp LCTRL>; 
