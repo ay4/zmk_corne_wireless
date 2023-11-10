@@ -287,6 +287,20 @@
         };
 
 	//
+	// This will make shift
+	// toggle to nav layer when held down
+	// and tap dance when tapped.
+	//
+        sd_tog: behavior_sd_tog {
+            compatible = "zmk,behavior-hold-tap";
+            label = "sd_tog";
+            #binding-cells = <1>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&sk LSHFT>;
+        };
+
+	//
 	// This is a sticky shift that, when pressed two times
 	// quickly, becomes a caps shift.
 	//
@@ -295,21 +309,7 @@
             label = "SD";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sk LSHFT>, <&caps_word>;
-        };
-
-	//
-	// This will make shift
-	// toggle to nav layer when held down
-	// and tap dance when tapped.
-	//
-        sd_tog: behavior_sd_tog {
-            compatible = "zmk,behavior-hold-tap";
-            label = "sd_tog";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&sd>;
+            bindings = <&sd_tog WNDW>, <&caps_word>;
         };
 
 	//
@@ -372,7 +372,7 @@
 
    &kp TAB        &kp B  &kp Y  &kp O  &kp U  &none                                    &none  &kp L  &kp D  &kp W  &kp Z  &none
    &mt LCTRL ESC  &kp C  &kp I  &kp E  &kp A  &none                                    &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
-   &sd_tog WNDW 0  &kp G  &kp X  &kp J  &kp K  &none                                   &none  &kp R  &kp M  &kp F  &kp P  &sd
+   &sd            &kp G  &kp X  &kp J  &kp K  &none                                   &none  &kp R  &kp M  &kp F  &kp P  &sd
 
                   &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &mo_tog NUM NUM  &mo_tog NAV NAV
                         >;
@@ -611,7 +611,7 @@
 */
 
                         bindings = <
-   &none  &none  &none       &kp C_BRI_DN  &kp C_BRI_UP  &none                                  &kp COMMA  &kp N1  &kp N2  &kp N3  &kp PLUS   &kp DOT
+   &none  &none  &none       &kp C_BRI_DN  &kp C_BRI_UP  &none                                  &kp COMMA  &kp N1  &kp N2  &kp N3  &kp PLUS   &kp STAR
    &none  &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &none                                  &kp DOT    &kp N4  &kp N5  &kp N6  &kp MINUS  &kp FSLH
    &none  &none  &none       &none         &none         &none                                  &none      &kp N7  &kp N8  &kp N9  &kp EQUAL  &kp EQUAL
 
