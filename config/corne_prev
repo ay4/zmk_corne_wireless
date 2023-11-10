@@ -323,20 +323,6 @@
             bindings = <&sk LSHFT>, <&caps_word>;
         };
 
-	//
-	// This will make shift
-	// toggle to nav layer when held down
-	// and tap dance when tapped.
-	//
-        mo_tog: behavior_mo_tog {
-            compatible = "zmk,behavior-hold-tap";
-            label = "mo_tog";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&sd>, <&mo>;
-        };
-
     };
 
 
@@ -370,7 +356,7 @@
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐
                                 │       │       ││ SYM_R │░     │       │░│       │       │░
-                                │   ⌥   │   ⌘   ││  ---  │░     │ bkspc │░│  NUM  │  NAV  │░
+                                │   ⌥   │   ⌘   ││  ---  │░     │ bkspc │░│  NAV  │  NUM  │░
                                 │       │       ││ space │░     │       │░│       │       │░
                                 └───────┴───────┘│       │░     │       │░└───────┴───────┘░
                                  ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░
@@ -383,9 +369,9 @@
 
    &kp TAB       &kp B  &kp Y  &kp O  &kp U  &none                                    &none  &kp L  &kp D  &kp W  &kp Z  &none
    &mt LCTRL ESC &kp C  &kp I  &kp E  &kp A  &none                                    &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
-   &mo_tog 5     &kp G  &kp X  &kp J  &kp K  &none                                    &none  &kp R  &kp M  &kp F  &kp P  &sd
+   &sd           &kp G  &kp X  &kp J  &kp K  &none                                    &none  &kp R  &kp M  &kp F  &kp P  &sd
 
-                  &alt_qwerty  &cmd_qwerty  &lt_cust SYM_R SPACE             &kp BSPC  &mo NUM  &tog NAV
+                  &alt_qwerty  &cmd_qwerty  &lt_cust SYM_R SPACE             &kp BSPC  &mo NAV  &mo NUM
                         >;
                 };
 
@@ -557,20 +543,20 @@
 
 
 
-                window_mngmntt {
+                nav_layer {
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐
 │       │ windw │ windw │ windw │ windw │ windw │░                       │       │       │       │       │       │       │░
-│       │ uplft │  max  │ uprht │ lft   │  sml  │░                       │       │       │       │ Tab←  │   ↑   │ Tab→  │░
-│       │ qartr │       │ qartr │  up   │ uprht │░                       │       │       │       │       │       │       │░
+│       │  sml  │ uplft │  max  │ uprht │  sml  │░                       │       │ Tab←  │   ↑   │ Tab→  │       │       │░
+│       │   up  │ qartr │       │ qartr │ uprht │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │ windw │ windw │ windw │ windw │ windw │░                       │       │       │       │       │       │       │░
-│       │  lft  │ centr │  rht  │  lft  │  sml  │░                       │       │       │       │   ←   │   ↓   │   →   │░
-│       │  hlf  │       │  hlf  │  mid  │downrht│░                       │       │       │       │       │       │       │░
+│       │  sml  │  lft  │ centr │  rht  │  sml  │░                       │  ⌥←   │   ←   │   ↓   │   →   │  ⌥→   │       │░
+│       │  mid  │  hlf  │       │  hlf  │downrht│░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
-│ norm. │ windw │       │ windw │ windw │       │░                       │       │       │       │ windw │ windw │ windw │░
-│ shift │ dnlft │       │ dnrht │  lft  │       │░                       │       │       │       │  sml  │ hide  │   sml │░
-│       │ qartr │       │ qartr │  mid  │       │░                       │       │       │       │ctr-lft│       │ctr-rht│░
+│ norm. │ windw │ windw │       │ windw │       │░                       │       │ windw │ windw │ windw │       │       │░
+│ shift │  sml  │ dnlft │       │ dnrht │       │░                       │       │  sml  │ hide  │  sml  │       │       │░
+│       │  dwn  │ qartr │       │ qartr │       │░                       │       │ctr-lft│       │ctr-rht│       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐
@@ -584,11 +570,11 @@
 */
 
                         bindings = <
-   &none     &kp LG(LS(LC(Q)))  &kp LG(LS(LC(W)))  &kp LG(LS(LC(E)))  &kp LG(LS(LC(N1))) &kp LG(LS(LC(N9)))      &none   &none  &none  &kp LG(LS(LBKT))      &kp UP     &kp LG(LS(RBKT))
-   &none     &kp LG(LS(LC(A)))  &kp LG(LS(LC(S)))  &kp LG(LS(LC(D)))  &kp LG(LS(LC(N2))) &kp LG(LS(LC(N0)))      &none   &none  &none  &kp LEFT              &kp DOWN   &kp RIGHT
-   &kp LSHFT &kp LG(LS(LC(Z)))  &none              &kp LG(LS(LC(X)))  &kp LG(LS(LC(N3))) &none                &none         &none   &none  &none  &kp LG(LS(LC(LEFT)))  &kp LG(H)  &kp LG(LS(LC(RIGHT)))
+   &none      &kp LG(LS(LC(N1)))  &kp LG(LS(LC(Q)))  &kp LG(LS(LC(W)))  &kp LG(LS(LC(E)))  &kp LG(LS(LC(N9)))      &none         &kp LG(LS(LBKT))  &kp UP     &kp LG(LS(RBKT))  &none         &none
+   &none      &kp LG(LS(LC(N2)))  &kp LG(LS(LC(A)))  &kp LG(LS(LC(S)))  &kp LG(LS(LC(D)))  &kp LG(LS(LC(N0)))      &kp LA(LEFT)  &kp LEFT          &kp DOWN   &kp RIGHT         &kp LA(RIGHT) &none
+   &kp LSHFT  &kp LG(LS(LC(N3)))  &kp LG(LS(LC(Z)))  &none   &kp LG(LS(LC(X)))  &none                &none         &kp LG(LS(LC(LEFT)))         &kp LG(H)  &kp LG(LS(LC(RIGHT)))        &none         &none
 
-                              &kp LALT  &kp LCMD  &kp LG(LS(LC(SPACE)))          &none &none &tog NAV
+                              &kp LALT  &kp LCMD  &kp LG(LS(LC(SPACE)))          &none &none &none
                         >;
                 };
 
@@ -601,22 +587,22 @@
 /*
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │  br-  │  br+  │       │░                       │   .   │   1   │   2   │   3   │   +   │   *   │░
+│       │       │       │  br-  │  br+  │       │░                       │   /   │   -   │   .   │   1   │   2   │   3   │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │ mute  │ vol-  │ vol+  │       │░                       │   ,   │   4   │   5   │   6   │   -   │   /   │░
+│       │       │ mute  │ vol-  │ vol+  │       │░                       │   *   │   +   │   ,   │   4   │   5   │   6   │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │       │   7   │   8   │   9   │   =   │   =   │░
+│       │       │       │       │       │       │░                       │       │       │   0   │   7   │   8   │   9   │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐
-                                │       │       ││       │░     │       │░│       │       │░
-                                │       │       ││       │░     │       │░│       │   0   │░
-                                │       │       ││       │░     │       │░│       │       │░
+                                │       │       ││       │░     │       │░│       │░░░░░░░│░
+                                │       │       ││       │░     │       │░│       │░░░░░░░│░
+                                │       │       ││       │░     │       │░│       │░░░░░░░│░
                                 └───────┴───────┘│       │░     │       │░└───────┴───────┘░
                                  ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░
                                                  └───────┘░     └───────┘░
@@ -624,11 +610,11 @@
 */
 
                         bindings = <
-   &none  &none  &none       &kp C_BRI_DN  &kp C_BRI_UP  &none                                  &kp COMMA  &kp N1  &kp N2  &kp N3  &kp PLUS   &kp DOT
-   &none  &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &none                                  &kp DOT    &kp N4  &kp N5  &kp N6  &kp MINUS  &kp FSLH
-   &none  &none  &none       &none         &none         &none                                  &none       &none  &kp N7  &kp N8  &kp N9     &kp EQUAL
+   &none  &none  &none       &kp C_BRI_DN  &kp C_BRI_UP  &none                                  &kp FSLH  &kp MINUS  &kp DOT    &kp N1  &kp N2  &kp N3
+   &none  &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &none                                  &kp STAR  &kp PLUS   &kp COMMA  &kp N4  &kp N5  &kp N6
+   &none  &none  &none       &none         &none         &none                                  &none     &none      &kp N0     &kp N7  &kp N8  &kp N9
 
-                                     &none &none &none                             &none &tog NUM  &kp N0
+                                     &none &none &none                             &none &none &none
                         >;
                 };
         };
