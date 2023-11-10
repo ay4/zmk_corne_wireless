@@ -383,7 +383,7 @@
 
    &kp TAB        &kp B  &kp Y  &kp O  &kp U  &none                                    &none  &kp L  &kp D  &kp W  &kp Z  &none
    &mt LCTRL ESC  &kp C  &kp I  &kp E  &kp A  &none                                    &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
-   &mo_tog 0 WNDW &kp G  &kp X  &kp J  &kp K  &none                                    &none  &kp R  &kp M  &kp F  &kp P  &sd
+   &mo_tog WNDW 0  &kp G  &kp X  &kp J  &kp K  &none                                    &none  &kp R  &kp M  &kp F  &kp P  &sd
 
                   &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &tog NUM  &tog NAV
                         >;
@@ -584,7 +584,7 @@
                         bindings = <
    &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV                    &tog NAV  &tog NAV  &tog NAV  &kp LG(LS(LBKT))  &kp UP                &kp LG(LS(RBKT))
    &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV                    &tog NAV  &tog NAV  &tog NAV  &kp LEFT          &kp DOWN              &kp RIGHT
-   &kp LSHFT &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV                    &tog NAV  &tog NAV  &tog NAV  &none             &kp LG(LS(LC(LEFT)))  &kp LG(H)
+   &kp LSHFT &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV                    &tog NAV  &tog NAV  &tog NAV  &none             &kp LG(H)             &none
 
                               &kp LALT  &kp LCMD  &tog NAV                     &tog NAV  &tog NAV  &tog NAV
                         >;
