@@ -311,6 +311,18 @@
             bindings = <&en_sym_r>, <&kp>;
         };
 
+	//
+	// This is a sticky shift that, when pressed two times
+	// quickly, becomes a caps shift.
+	//
+        sd: sd {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SD";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&sk LSHFT>, <&caps_word>;
+        };
+
     };
 
 
@@ -357,7 +369,7 @@
 
    &kp TAB       &kp B  &kp Y  &kp O  &kp U  &none                                    &none  &kp L  &kp D  &kp W  &kp Z  &none
    &mt LCTRL ESC &kp C  &kp I  &kp E  &kp A  &none                                    &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
-   &sk LSHFT     &kp G  &kp X  &kp J  &kp K  &none                                    &none  &kp R  &kp M  &kp F  &kp P  &sk LSHFT
+   &sd           &kp G  &kp X  &kp J  &kp K  &none                                    &none  &kp R  &kp M  &kp F  &kp P  &sd
 
                   &alt_qwerty  &cmd_qwerty  &lt_cust SYM_R SPACE             &kp BSPC  &mo NAV  &mo NUM
                         >;
