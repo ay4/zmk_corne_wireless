@@ -303,6 +303,20 @@
 	// toggle to nav layer when held down
 	// and tap dance when tapped.
 	//
+        sd_tog: behavior_sd_tog {
+            compatible = "zmk,behavior-hold-tap";
+            label = "sd_tog";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&sd>;
+        };
+
+	//
+	// This will make a layer
+	// toggle when pressed and
+	// activate when held
+	//
         mo_tog: behavior_mo_tog {
             compatible = "zmk,behavior-hold-tap";
             label = "mo_tog";
@@ -358,9 +372,9 @@
 
    &kp TAB        &kp B  &kp Y  &kp O  &kp U  &none                                    &none  &kp L  &kp D  &kp W  &kp Z  &none
    &mt LCTRL ESC  &kp C  &kp I  &kp E  &kp A  &none                                    &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
-   &mo_tog WNDW 0  &kp G  &kp X  &kp J  &kp K  &none                                    &none  &kp R  &kp M  &kp F  &kp P  &sd
+   &sd_tog WNDW 0  &kp G  &kp X  &kp J  &kp K  &none                                   &none  &kp R  &kp M  &kp F  &kp P  &sd
 
-                  &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &tog NUM  &tog NAV
+                  &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &mo_tog NUM  &mo_tog NAV
                         >;
                 };
 
@@ -541,9 +555,9 @@
 │       │       │       │       │       │       │░                       │       │       │       │   ←   │   ↓   │   →   │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
-│       │       │       │       │       │       │░                       │       │       │       │ windw │ windw │ windw │░
-│ shift │       │       │       │       │       │░                       │       │       │       │  sml  │ hide  │   sml │░
-│       │       │       │       │       │       │░                       │       │       │       │ctr-lft│       │ctr-rht│░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
+│ shift │       │       │       │       │       │░                       │       │       │       │  copy │  cut  │ paste │░
+│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐
@@ -559,7 +573,7 @@
                         bindings = <
    &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV                    &tog NAV  &tog NAV  &tog NAV  &kp LG(LS(LBKT))  &kp UP                &kp LG(LS(RBKT))
    &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV                    &tog NAV  &tog NAV  &tog NAV  &kp LEFT          &kp DOWN              &kp RIGHT
-   &kp LSHFT &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV                    &tog NAV  &tog NAV  &tog NAV  &none             &kp LG(H)             &none
+   &kp LSHFT &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV                    &tog NAV  &tog NAV  &tog NAV  &kp LG(C)         &kp LG(X)             &kp LG(V)
 
                               &kp LALT  &kp LCMD  &tog NAV                     &tog NAV  &tog NAV  &tog NAV
                         >;
@@ -588,7 +602,7 @@
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐
                                 │       │       ││       │░     │       │░│       │       │░
-                                │       │       ││       │░     │       │░│       │   0   │░
+                                │       │       ││       │░     │ bcksp │░│       │   0   │░
                                 │       │       ││       │░     │       │░│       │       │░
                                 └───────┴───────┘│       │░     │       │░└───────┴───────┘░
                                  ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░
@@ -599,9 +613,9 @@
                         bindings = <
    &none  &none  &none       &kp C_BRI_DN  &kp C_BRI_UP  &none                                  &kp COMMA  &kp N1  &kp N2  &kp N3  &kp PLUS   &kp DOT
    &none  &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &none                                  &kp DOT    &kp N4  &kp N5  &kp N6  &kp MINUS  &kp FSLH
-   &none  &none  &none       &none         &none         &none                                  &none       &none  &kp N7  &kp N8  &kp N9     &kp EQUAL
+   &none  &none  &none       &none         &none         &none                                  &none      &kp N7  &kp N8  &kp N9  &kp EQUAL  &kp EQUAL
 
-                                     &none &none &none                             &none &tog NUM  &kp N0
+                                     &none &none &none                             &kp BSPC &tog NUM  &kp N0
                         >;
                 };
         };
