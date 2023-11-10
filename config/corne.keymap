@@ -143,7 +143,8 @@
         ZMK_MACRO(to_ru,
             wait-ms = <0>;
             bindings
-                = <&kp LG(LA(N2))>
+        //      = <&kp LG(LA(N2))>
+		= <&kp LC(SPACE)>
                 , <&to RU>
                 ;
         )
@@ -151,7 +152,7 @@
         ZMK_MACRO(to_en,
             wait-ms = <0>;
             bindings
-                = <&kp LG(LA(N1))>
+                = <&kp LC(SPACE)>
                 , <&to EN>
                 ;
         )
