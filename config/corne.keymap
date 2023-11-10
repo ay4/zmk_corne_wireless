@@ -584,9 +584,9 @@
 */
 
                         bindings = <
-   &none     &kp LG(LS(LC(Q)))  &kp LG(LS(LC(W)))  &kp LG(LS(LC(E)))  &kp LG(LS(LC(N1))) &kp LG(LS(LC(N9)))      &none   &none  &none  &kp LG(LS(LBKT))      &kp UP     &kp LG(LS(RBKT))
-   &none     &kp LG(LS(LC(A)))  &kp LG(LS(LC(S)))  &kp LG(LS(LC(D)))  &kp LG(LS(LC(N2))) &kp LG(LS(LC(N0)))      &none   &none  &none  &kp LEFT              &kp DOWN   &kp RIGHT
-   &kp LSHFT &kp LG(LS(LC(Z)))  &none              &kp LG(LS(LC(X)))  &kp LG(LS(LC(N3))) &none                &none         &none   &none  &none  &kp LG(LS(LC(LEFT)))  &kp LG(H)  &kp LG(LS(LC(RIGHT)))
+   &none     &kp LG(LS(LC(Q)))  &kp LG(LS(LC(W)))  &kp LG(LS(LC(E)))  &kp LG(LS(LC(N1))) &kp LG(LS(LC(N9)))   &none   &none  &none  &kp LG(LS(LBKT))  &kp UP                &kp LG(LS(RBKT))
+   &none     &kp LG(LS(LC(A)))  &kp LG(LS(LC(S)))  &kp LG(LS(LC(D)))  &kp LG(LS(LC(N2))) &kp LG(LS(LC(N0)))   &none   &none  &none  &kp LEFT          &kp DOWN              &kp RIGHT
+   &kp LSHFT &kp LG(LS(LC(Z)))  &none              &kp LG(LS(LC(X)))  &kp LG(LS(LC(N3))) &none                &none   &none  &none  &none             &kp LG(LS(LC(LEFT)))  &kp LG(H)
 
                               &kp LALT  &kp LCMD  &kp LG(LS(LC(SPACE)))          &none &none &tog NAV
                         >;
