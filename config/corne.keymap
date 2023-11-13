@@ -370,9 +370,9 @@
 
                         bindings = <
 
-   &kp TAB        &kp B  &kp Y  &kp O  &kp U  &none                                    &none  &kp L  &kp D  &kp W  &kp Z  &none
-   &mt LCTRL ESC  &kp C  &kp I  &kp E  &kp A  &none                                    &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
-   &sd            &kp G  &kp X  &kp J  &kp K  &none                                   &none  &kp R  &kp M  &kp F  &kp P  &sd
+   &kp TAB              &kp B  &kp Y  &kp O  &kp U  &none                                    &none  &kp L  &kp D  &kp W  &kp Z  &none
+   &mt LCTRL ESC        &kp C  &kp I  &kp E  &kp A  &none                                    &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
+   &sd_tog WNDW LSHIFT  &kp G  &kp X  &kp J  &kp K  &none                                   &none  &kp R  &kp M  &kp F  &kp P  &sd
 
                   &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &mo_tog NUM NUM  &mo_tog NAV NAV
                         >;
