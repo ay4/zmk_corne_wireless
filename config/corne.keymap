@@ -372,9 +372,9 @@
 
    &kp TAB              &kp B  &kp Y  &kp O  &kp U  &none                                   &none  &kp L  &kp D  &kp W  &kp Z  &none
    &mt LCTRL ESC        &kp C  &kp I  &kp E  &kp A  &none                                   &kp V  &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
-   &sd_tog WNDW LSHIFT  &kp G  &kp X  &kp J  &kp K  &none                                   &none  &kp R  &kp M  &kp F  &kp P  &sd_tog WNDW LSHIFT
+   &sd_tog WNDW LSHIFT  &kp G  &kp X  &kp J  &kp K  &none                                   &none  &kp R  &kp M  &kp F  &kp P  &sd
 
-                  &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &mo_tog NUM NUM  &mo_tog NAV NAV
+                  &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &mo NUM  &mo NAV NAV
                         >;
                 };
 
@@ -575,7 +575,7 @@
    &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV                    &tog NAV  &tog NAV  &tog NAV  &kp LEFT          &kp DOWN              &kp RIGHT
    &kp LSHFT &tog NAV  &tog NAV  &tog NAV  &tog NAV  &tog NAV                    &tog NAV  &tog NAV  &tog NAV  &kp LG(C)         &kp LG(X)             &kp LG(V)
 
-                              &kp LALT  &kp LCMD  &tog NAV                     &tog NAV  &tog NAV  &tog NAV
+                              &kp LALT  &kp LCMD  &tog NAV                     &tog NAV  &none &none
                         >;
                 };
 
@@ -615,7 +615,7 @@
    &none  &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &none                                  &kp DOT    &kp N4  &kp N5  &kp N6  &kp MINUS  &kp FSLH
    &none  &none  &none       &none         &none         &none                                  &none      &kp N7  &kp N8  &kp N9  &kp EQUAL  &kp EQUAL
 
-                                     &none &none &none                             &kp BSPC &tog NUM  &kp N0
+                                     &none &none &none                             &kp BSPC &none  &kp N0
                         >;
                 };
         };
