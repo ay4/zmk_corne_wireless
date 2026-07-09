@@ -495,7 +495,7 @@
    &bt BT_SEL 0  &kp AT     &kp PLUS   &kp LPAR &kp COMMA  &kp SEMI             &kp COLON  &kp DOT    &kp RPAR  &kp HASH  &kp AMPS   &bt BT_SEL 3
    &bt BT_SEL 1  &kp EQUAL  &kp LT     &kp LBRC &kp APOS   &kp DQT              &kp TILDE  &kp QMARK  &kp RBRC  &kp GT    &kp EQUAL  &bt BT_SEL 4
 
-                                     &none &none &none                        &kp RET &none &none
+                                     &none &none &none                        &kp RET &none &studio_unlock
                         >;
                 };
 
