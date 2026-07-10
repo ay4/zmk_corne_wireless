@@ -306,25 +306,23 @@
 
 
         //
-        // Russian double-tap keys. Single tap = the primary Cyrillic letter,
-        // double tap = the paired letter. Keycodes are the QWERTY positions
-        // that the macOS Russian (ЙЦУКЕН) layout maps to each Cyrillic letter,
-        // e.g. tapping &kp I under ЙЦУКЕН produces ш.
-        //   ru_w: ш / щ   (I / O)
-        //   ru_e: е / э   (T / ')
-        //   ru_u: у / ю   (E / .)
-        //   ru_i: и / й   (B / Q)
-        //   ru_o: о / ё   (J / `)
-        //   ru_j: ь / ъ   (M / ])
-        //   ru_z: ж / з   (; / P)
+        // Russian secondary letters: TAP = primary Cyrillic (fires instantly,
+        // no double-tap wait); HOLD = the paired letter. `rht` is a hold-tap
+        // (tap-preferred). Keycodes are the ЙЦУКЕН QWERTY positions. Used on
+        // the RU layer as `&rht <hold/secondary> <tap/primary>`:
+        //   ш/щ = &rht O I     е/э = &rht APOS T    у/ю = &rht DOT E
+        //   и/й = &rht Q B      о/ё = &rht GRAVE J   ь/ъ = &rht RBKT M
+        //   ж/з = &rht P SEMI
         //
-        ru_w: ru_w { compatible = "zmk,behavior-tap-dance"; label = "RU_W"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp I>, <&kp O>; };
-        ru_e: ru_e { compatible = "zmk,behavior-tap-dance"; label = "RU_E"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp T>, <&kp APOS>; };
-        ru_u: ru_u { compatible = "zmk,behavior-tap-dance"; label = "RU_U"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp E>, <&kp DOT>; };
-        ru_i: ru_i { compatible = "zmk,behavior-tap-dance"; label = "RU_I"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp B>, <&kp Q>; };
-        ru_o: ru_o { compatible = "zmk,behavior-tap-dance"; label = "RU_O"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp J>, <&kp GRAVE>; };
-        ru_j: ru_j { compatible = "zmk,behavior-tap-dance"; label = "RU_J"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp M>, <&kp RBKT>; };
-        ru_z: ru_z { compatible = "zmk,behavior-tap-dance"; label = "RU_Z"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp SEMI>, <&kp P>; };
+        rht: rht {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RHT";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            bindings = <&kp>, <&kp>;
+        };
 
         //
         // The red key: tap = Escape, hold = meh_qwerty (Ctrl+Alt+Cmd + QWERTY
@@ -402,7 +400,8 @@
 /*
 Cyrillic letters sit where the matching LATIN logical key is on the EN layer
 (e.g. п is where Latin p is). Keycodes sent are the QWERTY positions the macOS
-Russian (ЙЦУКЕН) layout maps to each letter. (x) below a key = its double-tap.
+Russian (ЙЦУКЕН) layout maps to each letter. (x) below a key = hold for that
+paired letter (е→э, и→й, о→ё, у→ю, ш→щ, ж→з, ь→ъ).
 
 Inner columns carry always-on punctuation. In Russian mode these use ЙЦУКЕН
 keycodes: ! = Shift+1, . = "/" key, , = Shift+"/", ? = Shift+7. # is not on
@@ -433,9 +432,9 @@ keycodes: ! = Shift+1, . = "/" key, , = Shift+"/", ? = Shift+7. # is not on
 */
                         bindings = <
 
-   &trans          &kp COMMA  &kp S     &ru_o  &ru_u  &kp EXCL                   &kp LS(N7)  &kp K  &kp L  &ru_w  &ru_z  &trans
-   &trans          &kp W      &ru_i     &ru_e  &kp F  &kp FSLH                   &kp D       &kp X  &kp N  &kp C  &kp Y  &kp Z
-   &trans          &kp U      &kp LBKT  &ru_j  &kp R  &kp LS(FSLH)               &ru_hash    &kp H  &kp V  &kp A  &kp G  &trans
+   &trans          &kp COMMA  &kp S     &rht GRAVE J  &rht DOT E  &kp EXCL       &kp LS(N7)  &kp K  &kp L  &rht O I  &rht P SEMI  &trans
+   &trans          &kp W      &rht Q B  &rht APOS T   &kp F       &kp FSLH       &kp D       &kp X  &kp N  &kp C     &kp Y        &kp Z
+   &trans          &kp U      &kp LBKT  &rht RBKT M   &kp R       &kp LS(FSLH)   &ru_hash    &kp H  &kp V  &kp A     &kp G        &trans
 
                             &trans  &trans  &hold_sym_r 0 SPACE                  &trans  &trans  &trans
                         >;
