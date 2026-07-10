@@ -132,18 +132,20 @@
         // Layer-scoped so the same chord does opposite things:
         //   on EN -> to_ru (Cmd+Alt+2 + switch to RU layer)
         //   on RU -> to_en (Cmd+Alt+1 + switch to EN layer)
-        // Short timeout so a deliberate simultaneous chord fires it,
-        // while a normal sequential Cmd+Space passes through.
+        // Note: these two thumbs are physically Cmd+Space (the macOS input
+        // toggle). 100ms so a normal Super+Enter press reliably fires the
+        // combo and is consumed here; the macro then sends the *specific*
+        // ⌘⌥2/⌘⌥1 switch instead of leaking a stray Cmd+Space.
         //
         compatible = "zmk,combos";
         combo_to_ru {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
             key-positions = <37 38>;
             layers = <EN>;
             bindings = <&to_ru>;
         };
         combo_to_en {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
             key-positions = <37 38>;
             layers = <RU>;
             bindings = <&to_en>;
