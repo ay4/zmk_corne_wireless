@@ -160,6 +160,20 @@
                 , <&macro_release &mo QWE &kp LALT>
                 ;
         )
+
+        //
+        // Held by the red key: hold Ctrl+Alt+Cmd (Meh) AND switch to the
+        // QWERTY layer, so Meh shortcuts use QWERTY letters no matter which
+        // alpha layout / language is active.
+        //
+        ZMK_MACRO(meh_qwerty,
+            wait-ms = <0>;
+            bindings
+                = <&macro_press &mo QWE &kp LC(LA(LGUI))>
+                , <&macro_pause_for_release>
+                , <&macro_release &mo QWE &kp LC(LA(LGUI))>
+                ;
+        )
         //
         // Switch to layers while
         // switching languages for
@@ -313,9 +327,9 @@
         ru_z: ru_z { compatible = "zmk,behavior-tap-dance"; label = "RU_Z"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp SEMI>, <&kp P>; };
 
         //
-        // The red key: tap = Escape, hold = Ctrl+Alt+Cmd (the "Meh" modifier,
-        // combine with other keys). Used as `&red LC(LA(LGUI)) ESC`.
-        // hold-preferred so the mods engage as soon as another key is pressed.
+        // The red key: tap = Escape, hold = meh_qwerty (Ctrl+Alt+Cmd + QWERTY
+        // layer, so Meh shortcuts use QWERTY letters). Used as `&red 0 ESC`.
+        // hold-preferred so the hold engages as soon as another key is pressed.
         //
         red: red {
             compatible = "zmk,behavior-hold-tap";
@@ -324,7 +338,7 @@
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <125>;
-            bindings = <&kp>, <&kp>;
+            bindings = <&meh_qwerty>, <&kp>;
         };
 
     };
@@ -372,7 +386,7 @@
                         bindings = <
 
    &kp TAB              &kp B  &kp Y  &kp O  &kp U  &kp EXCL                                &kp QMARK  &kp L  &kp D  &kp W  &kp Z  &none
-   &red LC(LA(LGUI)) ESC &kp C  &kp I  &kp E  &kp A  &kp DOT                                &kp V      &kp H  &kp T  &kp S  &kp N  &kp Q
+   &red 0 ESC           &kp C  &kp I  &kp E  &kp A  &kp DOT                                 &kp V      &kp H  &kp T  &kp S  &kp N  &kp Q
    &ss LSHFT LSHFT      &kp G  &kp X  &kp J  &kp K  &kp COMMA                               &kp HASH   &kp R  &kp M  &kp F  &kp P  &ss LSHFT LSHFT
 
                   &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &mo NAV  &mo NUM
