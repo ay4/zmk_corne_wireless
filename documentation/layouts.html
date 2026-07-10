@@ -96,7 +96,7 @@ const EN={ name:"English (base)",
     [K("?","s"),K("L"),K("D"),K("W"),K("Z"),dead],
     [K("V"),K("H"),K("T"),K("S"),K("N"),K("Q")],
     [K("#","s"),K("R"),K("M"),K("F"),K("P"),K("⇧","m")] ],
-    thumbs:[K("⌫","m"),K("NAV","m"),K("NUM","m")] } };
+    thumbs:[K("⌫","m"),{m:"←",k:"m",s:"nav"},{m:"→",k:"m",s:"num"}] } };
 
 function T(o){o.t=1;return o;} // mark inherited-from-English
 const RU={ name:"Russian (ЙЦУКЕН)",
@@ -109,7 +109,7 @@ const RU={ name:"Russian (ЙЦУКЕН)",
     [K("?","s"),K("л"),K("д"),{m:"ш",k:"a",s:"щ"},{m:"ж",k:"a",s:"з"},dead],
     [K("в"),K("ч"),K("т"),K("с"),K("н"),K("я")],
     [{m:"#",k:"s",s:"↺en"},K("р"),K("м"),K("ф"),K("п"),T(K("⇧","m"))] ],
-    thumbs:[T(K("⌫","m")),T(K("NAV","m")),T(K("NUM","m"))] } };
+    thumbs:[T(K("⌫","m")),T({m:"←",k:"m",s:"nav"}),T({m:"→",k:"m",s:"num"})] } };
 
 const SYM={ name:"Symbols",
   left:{ rows:[

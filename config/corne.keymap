@@ -318,13 +318,13 @@
         //   ru_j: ь / ъ   (M / ])
         //   ru_z: ж / з   (; / P)
         //
-        ru_w: ru_w { compatible = "zmk,behavior-tap-dance"; label = "RU_W"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp I>, <&kp O>; };
-        ru_e: ru_e { compatible = "zmk,behavior-tap-dance"; label = "RU_E"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp T>, <&kp APOS>; };
-        ru_u: ru_u { compatible = "zmk,behavior-tap-dance"; label = "RU_U"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp E>, <&kp DOT>; };
-        ru_i: ru_i { compatible = "zmk,behavior-tap-dance"; label = "RU_I"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp B>, <&kp Q>; };
-        ru_o: ru_o { compatible = "zmk,behavior-tap-dance"; label = "RU_O"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp J>, <&kp GRAVE>; };
-        ru_j: ru_j { compatible = "zmk,behavior-tap-dance"; label = "RU_J"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp M>, <&kp RBKT>; };
-        ru_z: ru_z { compatible = "zmk,behavior-tap-dance"; label = "RU_Z"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp SEMI>, <&kp P>; };
+        ru_w: ru_w { compatible = "zmk,behavior-tap-dance"; label = "RU_W"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp I>, <&kp O>; };
+        ru_e: ru_e { compatible = "zmk,behavior-tap-dance"; label = "RU_E"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp T>, <&kp APOS>; };
+        ru_u: ru_u { compatible = "zmk,behavior-tap-dance"; label = "RU_U"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp E>, <&kp DOT>; };
+        ru_i: ru_i { compatible = "zmk,behavior-tap-dance"; label = "RU_I"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp B>, <&kp Q>; };
+        ru_o: ru_o { compatible = "zmk,behavior-tap-dance"; label = "RU_O"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp J>, <&kp GRAVE>; };
+        ru_j: ru_j { compatible = "zmk,behavior-tap-dance"; label = "RU_J"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp M>, <&kp RBKT>; };
+        ru_z: ru_z { compatible = "zmk,behavior-tap-dance"; label = "RU_Z"; #binding-cells = <0>; tapping-term-ms = <300>; bindings = <&kp SEMI>, <&kp P>; };
 
         //
         // The red key: tap = Escape, hold = meh_qwerty (Ctrl+Alt+Cmd + QWERTY
@@ -374,7 +374,7 @@
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐
                                 │       │       ││  SYM  │░     │       │░│       │       │░
-                                │   ⌥   │   ⌘   ││  ---  │░     │ bkspc │░│  NAV  │  NUM  │░
+                                │   ⌥   │   ⌘   ││  ---  │░     │ bkspc │░│ ←NAV  │  NUM→ │░
                                 │       │       ││ space │░     │       │░│       │       │░
                                 └───────┴───────┘│       │░     │       │░└───────┴───────┘░
                                  ░░░░░░░░░░░░░░░░│       │░     │       │░ ░░░░░░░░░░░░░░░░░
@@ -389,7 +389,7 @@
    &red 0 ESC           &kp C  &kp I  &kp E  &kp A  &kp DOT                                 &kp V      &kp H  &kp T  &kp S  &kp N  &kp Q
    &ss LSHFT LSHFT      &kp G  &kp X  &kp J  &kp K  &kp COMMA                               &kp HASH   &kp R  &kp M  &kp F  &kp P  &ss LSHFT LSHFT
 
-                  &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &mo NAV  &mo NUM
+                  &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &lt_cust NAV LEFT  &lt_cust NUM RIGHT
                         >;
                 };
 
