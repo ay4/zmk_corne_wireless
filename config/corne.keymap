@@ -126,21 +126,9 @@
             bindings = <&kp LG(LS(J))>;
         };
 
-        //
-        // Left thumbs Super + Enter (positions 37 + 38) = EN<->RU switch.
-        // These two thumbs are physically Cmd+Space (the macOS toggle), so the
-        // combo consumes them and fires lang_toggle: Cmd+Space (OS toggle) +
-        // &tog RU (layer toggle). A SINGLE combo (no layer split) so it fires
-        // reliably in both directions.
-        //
-        compatible = "zmk,combos";
-        combo_lang {
-            timeout-ms = <100>;
-            key-positions = <37 38>;
-            bindings = <&lang_toggle>;
-        };
-
-
+        // (EN<->RU switch is NOT a combo — combos wouldn't fire on the thumb
+        // keys. Instead, holding Super activates the QWERTY layer, whose Enter
+        // key is bound to &lang_toggle. So "hold Super, tap Enter" switches.)
 
     };
 };
@@ -251,10 +239,9 @@
         )
 
         //
-        // EN<->RU switch fired by the Super+Enter combo. macOS Cmd+Space
-        // toggles the OS input source; &tog RU toggles the keyboard's Russian
-        // layer. A single toggle means one combo (no layer split) handles both
-        // directions.
+        // EN<->RU switch, bound to Enter on the QWERTY layer (which you reach
+        // by holding Super). Cmd+Space toggles the macOS input source; &tog RU
+        // toggles the keyboard's Russian layer — both directions, one key.
         //
         ZMK_MACRO(lang_toggle,
             wait-ms = <0>;
@@ -394,9 +381,9 @@
         ru_z: ru_z { compatible = "zmk,behavior-tap-dance"; label = "RU_Z"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp SEMI>, <&kp P>; };
 
         //
-        // The red key: tap = Escape, hold = QNUM layer (whose left-hand keys
-        // type Shift+letter, giving capitals without relying on OS Caps Lock).
-        // hold-preferred so the layer engages as soon as another key is pressed.
+        // The red key: tap = Escape, hold = Ctrl+Alt+Cmd (the "Meh" modifier,
+        // combine with other keys). Used as `&red LC(LA(LGUI)) ESC`.
+        // hold-preferred so the mods engage as soon as another key is pressed.
         //
         red: red {
             compatible = "zmk,behavior-hold-tap";
@@ -405,7 +392,7 @@
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <125>;
-            bindings = <&mo>, <&kp>;
+            bindings = <&kp>, <&kp>;
         };
 
     };
@@ -453,7 +440,7 @@
                         bindings = <
 
    &kp TAB              &kp B  &kp Y  &kp O  &kp U  &kp EXCL                                &kp QMARK  &kp L  &kp D  &kp W  &kp Z  &none
-   &red QNUM ESC        &kp C  &kp I  &kp E  &kp A  &kp DOT                                 &kp V      &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
+   &red LC(LA(LGUI)) ESC &kp C  &kp I  &kp E  &kp A  &kp DOT                                &kp V      &kp H  &kp T  &kp S  &kp N  &hold_ru 0 Q
    &sd_tog WNDW LSHIFT  &kp G  &kp X  &kp J  &kp K  &kp COMMA                               &kp HASH   &kp R  &kp M  &kp F  &kp P  &sd
 
                   &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &mo NAV  &mo NUM
@@ -633,7 +620,7 @@ Inner columns (! . , ? #) are the always-on punctuation shared with the base lay
    &trans     &kp A  &kp S  &kp D  &kp F  &kp G                                   &kp H  &kp J  &kp K      &kp L    &kp SEMI  &kp APOS
    &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B                                   &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &trans
 
-                     &kp LALT  &kp LCMD  &trans                                  &trans  &trans   &trans
+                     &kp LALT  &kp LCMD  &lang_toggle                            &trans  &trans   &trans
                         >;
                 };
 
