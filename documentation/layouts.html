@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corne layouts — EN / RU / SYM</title>
+<style>
+  :root{
+    --bg:#f3f4f6; --fg:#1b1d21; --card:#ffffff; --cardbd:#e2e5ea;
+    --key:#ffffff; --keybd:#cfd4dc; --keysh:#e7eaef;
+    --alpha:#14161a; --sym:#1257c9; --symbg:#e9f0fc; --symbd:#c4d8f6;
+    --mod:#6b7280; --modbg:#f0f1f4; --bt:#7c3aed; --btbg:#f2ecfd; --btbd:#ddccfa;
+    --sub:#9aa0a8; --title:#0f1115; --muted:#8b929c;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131519; --fg:#e6e8ec; --card:#1b1e24; --cardbd:#2b2f37;
+      --key:#232830; --keybd:#3a4048; --keysh:#191c22;
+      --alpha:#f0f2f5; --sym:#8ab4ff; --symbg:#1a2740; --symbd:#2c4370;
+      --mod:#9aa2ad; --modbg:#232830; --bt:#c4a6ff; --btbg:#2a2340; --btbd:#453667;
+      --sub:#727a86; --title:#f2f4f7; --muted:#7b828d;
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    padding:16px 14px 28px; -webkit-font-smoothing:antialiased;
+  }
+  h1{font-size:15px; font-weight:650; margin:0 0 4px; color:var(--title); letter-spacing:.2px}
+  .hint{font-size:11.5px; color:var(--muted); margin:0 0 14px}
+  .layout{background:var(--card); border:1px solid var(--cardbd); border-radius:12px;
+          padding:12px 12px 16px; margin:0 auto 14px; width:max-content; max-width:100%}
+  h2{font-size:12.5px; font-weight:650; text-transform:uppercase; letter-spacing:.6px;
+     color:var(--title); margin:2px 2px 10px}
+  .board{display:flex; gap:34px; align-items:flex-start}
+  .half{display:flex; flex-direction:column}
+  .grid{display:flex; gap:5px}
+  .col{display:flex; flex-direction:column; gap:5px}
+  .thumbs{display:flex; gap:5px; margin-top:6px}
+  .half.left .thumbs{align-self:flex-end; transform:rotate(8deg); transform-origin:top left}
+  .half.right .thumbs{align-self:flex-start; transform:rotate(-8deg); transform-origin:top right}
+  .key{
+    width:44px; height:44px; border-radius:8px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:var(--key); border:1px solid var(--keybd);
+    box-shadow:0 1px 0 var(--keysh); position:relative; user-select:none;
+  }
+  .key .m{font-size:16px; font-weight:600; color:var(--alpha); line-height:1}
+  .key .s{font-size:9.5px; color:var(--sub); position:absolute; top:3px; right:5px; font-weight:600}
+  .key.k-s{background:var(--symbg); border-color:var(--symbd)}
+  .key.k-s .m{color:var(--sym); font-weight:700}
+  .key.k-m{background:var(--modbg)}
+  .key.k-m .m{color:var(--mod); font-size:12px; font-weight:600}
+  .key.k-b{background:var(--btbg); border-color:var(--btbd)}
+  .key.k-b .m{color:var(--bt); font-size:11px; font-weight:700}
+  .key.k-d{background:transparent; border-style:dashed; border-color:var(--keybd); box-shadow:none; opacity:.45}
+  .key.trans{opacity:.42}
+  .legend{display:flex; flex-wrap:wrap; gap:6px 16px; margin:2px auto 0; width:max-content;
+          max-width:100%; font-size:11.5px; color:var(--muted); line-height:1.5}
+  .legend b{color:var(--fg); font-weight:650}
+  .legend .sw{display:inline-block; width:11px; height:11px; border-radius:3px; vertical-align:-1px; margin-right:4px; border:1px solid var(--keybd)}
+  .sw.a{background:var(--key)} .sw.s{background:var(--symbg);border-color:var(--symbd)}
+  .sw.m{background:var(--modbg)} .sw.b{background:var(--btbg);border-color:var(--btbd)}
+</style>
+</head>
+<body>
+  <h1>Wireless Corne — layout reference</h1>
+  <p class="hint">Legends show what each key <b>outputs</b>. Small top-right glyph = double-tap (Russian) or hold. Dashed = unused; faded = same as English.</p>
+  <div id="app"></div>
+  <div class="legend">
+    <span><span class="sw a"></span>letters</span>
+    <span><span class="sw s"></span>symbols / punctuation</span>
+    <span><span class="sw m"></span>modifiers / layers</span>
+    <span><span class="sw b"></span>Bluetooth</span>
+    <span><b>Esc·meh</b> tap Esc / hold Ctrl+Alt+Cmd (+QWERTY)</span>
+    <span><b>␣·sym</b> tap Space / hold Symbols</span>
+    <span><b>⇧</b> hold = Shift, tap = sticky Shift</span>
+    <span><b>Super+Enter</b> switches EN↔RU</span>
+    <span><b>🔓</b> ZMK Studio unlock</span>
+  </div>
+
+<script>
+const D={d:"d"}; // dead/none
+function K(m,k,s){return {m:m,k:k||"a",s:s||""};}
+const dead={m:"",k:"d"};
+
+const EN={ name:"English (base)",
+  left:{ rows:[
+    [K("Tab","m"),K("B"),K("Y"),K("O"),K("U"),K("!","s")],
+    [{m:"Esc",k:"m",s:"meh"},K("C"),K("I"),K("E"),K("A"),K(".","s")],
+    [K("⇧","m"),K("G"),K("X"),K("J"),K("K"),K(",","s")] ],
+    thumbs:[K("⌥","m"),K("⌘","m"),{m:"␣",k:"m",s:"sym"}] },
+  right:{ rows:[
+    [K("?","s"),K("L"),K("D"),K("W"),K("Z"),dead],
+    [K("V"),K("H"),K("T"),K("S"),K("N"),K("Q")],
+    [K("#","s"),K("R"),K("M"),K("F"),K("P"),K("⇧","m")] ],
+    thumbs:[K("⌫","m"),K("NAV","m"),K("NUM","m")] } };
+
+function T(o){o.t=1;return o;} // mark inherited-from-English
+const RU={ name:"Russian (ЙЦУКЕН)",
+  left:{ rows:[
+    [T(K("Tab","m")),K("б"),K("ы"),{m:"о",k:"a",s:"ё"},{m:"у",k:"a",s:"ю"},K("!","s")],
+    [T({m:"Esc",k:"m",s:"meh"}),K("ц"),{m:"и",k:"a",s:"й"},{m:"е",k:"a",s:"э"},K("а"),K(".","s")],
+    [T(K("⇧","m")),K("г"),K("х"),{m:"ь",k:"a",s:"ъ"},K("к"),K(",","s")] ],
+    thumbs:[T(K("⌥","m")),T(K("⌘","m")),{m:"␣",k:"m",s:"sym"}] },
+  right:{ rows:[
+    [K("?","s"),K("л"),K("д"),{m:"ш",k:"a",s:"щ"},{m:"ж",k:"a",s:"з"},dead],
+    [K("в"),K("ч"),K("т"),K("с"),K("н"),K("я")],
+    [{m:"#",k:"s",s:"↺en"},K("р"),K("м"),K("ф"),K("п"),T(K("⇧","m"))] ],
+    thumbs:[T(K("⌫","m")),T(K("NAV","m")),T(K("NUM","m"))] } };
+
+const SYM={ name:"Symbols",
+  left:{ rows:[
+    [K("BT⎚","b"),K("<","s"),K("{","s"),K("[","s"),K("(","s"),K("!","s")],
+    [K("BT0","b"),K('"',"s"),K("_","s"),K("'","s"),K(":","s"),K(".","s")],
+    [K("BT1","b"),K("`","s"),K("*","s"),K("\\","s"),K(";","s"),K(",","s")] ],
+    thumbs:[dead,dead,dead] },
+  right:{ rows:[
+    [K("?","s"),K(")","s"),K("]","s"),K("}","s"),K(">","s"),K("BT2","b")],
+    [K("/","s"),K("=","s"),K("~","s"),K("+","s"),K("-","s"),K("BT3","b")],
+    [K("#","s"),K("@","s"),K("$","s"),K("&","s"),K("%","s"),K("BT4","b")] ],
+    thumbs:[{m:"⏎",k:"m"},dead,{m:"🔓",k:"m",s:"unlk"}] } };
+
+const LOFF=[12,12,4,0,8,14], ROFF=[14,8,0,4,12,12];
+
+function keyEl(k){
+  const d=document.createElement('div');
+  d.className='key k-'+(k.k||'a')+(k.t?' trans':'');
+  if(!k.m && (k.k==='d')){return d;}
+  const m=document.createElement('span'); m.className='m'; m.textContent=k.m; d.appendChild(m);
+  if(k.s){const s=document.createElement('span'); s.className='s'; s.textContent=k.s; d.appendChild(s);}
+  return d;
+}
+function halfEl(half,off,side){
+  const h=document.createElement('div'); h.className='half '+side;
+  const g=document.createElement('div'); g.className='grid';
+  for(let c=0;c<6;c++){
+    const col=document.createElement('div'); col.className='col'; col.style.marginTop=off[c]+'px';
+    for(let r=0;r<3;r++) col.appendChild(keyEl(half.rows[r][c]));
+    g.appendChild(col);
+  }
+  h.appendChild(g);
+  const t=document.createElement('div'); t.className='thumbs';
+  half.thumbs.forEach(k=>t.appendChild(keyEl(k)));
+  h.appendChild(t);
+  return h;
+}
+function boardEl(L){
+  const sec=document.createElement('section'); sec.className='layout';
+  const h2=document.createElement('h2'); h2.textContent=L.name; sec.appendChild(h2);
+  const b=document.createElement('div'); b.className='board';
+  b.appendChild(halfEl(L.left,LOFF,'left'));
+  b.appendChild(halfEl(L.right,ROFF,'right'));
+  sec.appendChild(b); return sec;
+}
+const app=document.getElementById('app');
+[EN,RU,SYM].forEach(L=>app.appendChild(boardEl(L)));
+</script>
+</body>
+</html>
