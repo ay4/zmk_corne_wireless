@@ -362,11 +362,13 @@
         // Hold-only symbol key: tap does NOTHING, hold types the symbol.
         // Used on the EN layer's old punctuation slots, which are now
         // tap-empty (symbols come from holding these keys, or from SYM).
+        // Hold-tap always takes 2 cells: `&hso <symbol> 0` (0 is a dummy for
+        // &none, which has zero binding-cells).
         //
         hso: hso {
             compatible = "zmk,behavior-hold-tap";
             label = "HSO";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
@@ -486,9 +488,9 @@ by holding Space (SYM) and tapping the key, as before.
 
                         bindings = <
 
-   &kp TAB              &rht LT B     &rht LBRC Y  &rht LBKT O  &rht LPAR U  &hso EXCL                              &hso QMARK  &rht RPAR L  &rht RBKT D  &rht RBRC W    &rht GT Z    &none
-   &red 0 ESC           &rht DQT C    &rht UNDER I &rht APOS E  &rht COLON A &hso DOT                               &rht FSLH V &rht EQUAL H &rht TILDE T &rht PLUS S    &rht MINUS N &kp Q
-   &ss LSHFT LSHFT      &rht GRAVE G  &rht STAR X  &rht BSLH J  &rht SEMI K  &hso COMMA                             &hso HASH   &rht AT R    &rht DLLR M  &rht AMPS F    &rht PRCNT P &ss LSHFT LSHFT
+   &kp TAB              &rht LT B     &rht LBRC Y  &rht LBKT O  &rht LPAR U  &hso EXCL 0                            &hso QMARK 0  &rht RPAR L  &rht RBKT D  &rht RBRC W    &rht GT Z    &none
+   &red 0 ESC           &rht DQT C    &rht UNDER I &rht APOS E  &rht COLON A &hso DOT 0                             &rht FSLH V &rht EQUAL H &rht TILDE T &rht PLUS S    &rht MINUS N &kp Q
+   &ss LSHFT LSHFT      &rht GRAVE G  &rht STAR X  &rht BSLH J  &rht SEMI K  &hso COMMA 0                           &hso HASH 0   &rht AT R    &rht DLLR M  &rht AMPS F    &rht PRCNT P &ss LSHFT LSHFT
 
                   &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &lt_cust NAV LEFT  &lt_cust NUM RIGHT
                         >;
