@@ -230,6 +230,42 @@
         )
 
         //
+        // ru_sym_* macros: flip the OS input source to English (Cmd+Alt+1),
+        // tap the symbol, flip back to Russian (Cmd+Alt+2) — the ru_hash
+        // trick, generalized to every symbol ЙЦУКЕН doesn't have. Each pairs
+        // with an rhs_* hold-tap behavior (see behaviors section): on the RU
+        // layer, holding the key types that symbol. Symbols that DO exist in
+        // ЙЦУКЕН (! " ; % : ? * ( ) - _ . ,) are sent directly via &rht.
+        //
+#define RU_SYM_MACRO(name, SYMKEY) \
+        ZMK_MACRO(ru_sym_##name, \
+            wait-ms = <30>; \
+            tap-ms = <0>; \
+            bindings \
+                = <&macro_tap &kp LG(LA(N1))> \
+                , <&macro_tap &kp SYMKEY> \
+                , <&macro_tap &kp LG(LA(N2))> \
+                ; \
+        )
+
+        RU_SYM_MACRO(lt,    LT)
+        RU_SYM_MACRO(lbrc,  LBRC)
+        RU_SYM_MACRO(lbkt,  LBKT)
+        RU_SYM_MACRO(rbkt,  RBKT)
+        RU_SYM_MACRO(rbrc,  RBRC)
+        RU_SYM_MACRO(gt,    GT)
+        RU_SYM_MACRO(apos,  APOS)
+        RU_SYM_MACRO(fslh,  FSLH)
+        RU_SYM_MACRO(equal, EQUAL)
+        RU_SYM_MACRO(tilde, TILDE)
+        RU_SYM_MACRO(plus,  PLUS)
+        RU_SYM_MACRO(grave, GRAVE)
+        RU_SYM_MACRO(bslh,  BSLH)
+        RU_SYM_MACRO(at,    AT)
+        RU_SYM_MACRO(dllr,  DLLR)
+        RU_SYM_MACRO(amps,  AMPS)
+
+        //
         // EN<->RU switch, bound to Enter on the QWERTY layer (which you reach
         // by holding Super). Cmd+Space toggles the macOS input source; &tog RU
         // toggles the keyboard's Russian layer — both directions, one key.
@@ -306,13 +342,11 @@
 
 
         //
-        // Russian secondary letters: TAP = primary Cyrillic (fires instantly,
-        // no double-tap wait); HOLD = the paired letter. `rht` is a hold-tap
-        // (tap-preferred). Keycodes are the ЙЦУКЕН QWERTY positions. Used on
-        // the RU layer as `&rht <hold/secondary> <tap/primary>`:
-        //   ш/щ = &rht O I     е/э = &rht APOS T    у/ю = &rht DOT E
-        //   и/й = &rht Q B      о/ё = &rht GRAVE J   ь/ъ = &rht RBKT M
-        //   ж/з = &rht P SEMI
+        // Generic hold-tap (tap-preferred), used as `&rht <hold> <tap>`.
+        // Backs the hold-for-symbol keys: hold = the SYM-layer symbol in the
+        // same physical position, tap = the letter. On EN that's every letter
+        // key; on RU only the letters whose symbol exists in ЙЦУКЕН (the rest
+        // use the rhs_* behaviors below, which flip the OS to EN and back).
         //
         rht: rht {
             compatible = "zmk,behavior-hold-tap";
@@ -323,6 +357,70 @@
             quick-tap-ms = <150>;
             bindings = <&kp>, <&kp>;
         };
+
+        //
+        // Hold-only symbol key: tap does NOTHING, hold types the symbol.
+        // Used on the EN layer's old punctuation slots, which are now
+        // tap-empty (symbols come from holding these keys, or from SYM).
+        //
+        hso: hso {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HSO";
+            #binding-cells = <1>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            bindings = <&kp>, <&none>;
+        };
+
+        //
+        // Same shape as rht (tap = key, hold = special), but the hold side
+        // runs the ru_hash macro because ЙЦУКЕН has no '#'. Used on the RU
+        // layer as `&rh_hash 0 <letter>`: tap = letter, hold = #.
+        //
+        rh_hash: rh_hash {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RH_HASH";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            bindings = <&ru_hash>, <&kp>;
+        };
+
+        //
+        // RU hold-for-symbol with OS flip: tap = Cyrillic letter, hold runs
+        // the matching ru_sym_* macro (flip OS to EN, tap symbol, flip back)
+        // for symbols ЙЦУКЕН doesn't have. RU_SYM_BEHAVIOR generates one
+        // behavior per macro; used as `&rhs_<name> 0 <letter>`.
+        //
+#define RU_SYM_BEHAVIOR(name) \
+        rhs_##name: rhs_##name { \
+            compatible = "zmk,behavior-hold-tap"; \
+            label = "RHS"; \
+            #binding-cells = <2>; \
+            flavor = "tap-preferred"; \
+            tapping-term-ms = <200>; \
+            quick-tap-ms = <150>; \
+            bindings = <&ru_sym_##name>, <&kp>; \
+        };
+
+        RU_SYM_BEHAVIOR(lt)
+        RU_SYM_BEHAVIOR(lbrc)
+        RU_SYM_BEHAVIOR(lbkt)
+        RU_SYM_BEHAVIOR(rbkt)
+        RU_SYM_BEHAVIOR(rbrc)
+        RU_SYM_BEHAVIOR(gt)
+        RU_SYM_BEHAVIOR(apos)
+        RU_SYM_BEHAVIOR(fslh)
+        RU_SYM_BEHAVIOR(equal)
+        RU_SYM_BEHAVIOR(tilde)
+        RU_SYM_BEHAVIOR(plus)
+        RU_SYM_BEHAVIOR(grave)
+        RU_SYM_BEHAVIOR(bslh)
+        RU_SYM_BEHAVIOR(at)
+        RU_SYM_BEHAVIOR(dllr)
+        RU_SYM_BEHAVIOR(amps)
 
         //
         // The red key: tap = Escape, hold = meh_qwerty (Ctrl+Alt+Cmd + QWERTY
@@ -356,17 +454,22 @@
                 compatible = "zmk,keymap";
                 default_layer {
 /*
+Top glyph on a key = HOLD for that symbol (the one in the same position on
+the SYM layer); a plain tap types the letter. The old punctuation keys
+(! ? . , #) are tap-empty and fire only on hold. Symbols can also be typed
+by holding Space (SYM) and tapping the key, as before.
+
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐
-│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  tab  │   B   │   Y   │   O   │   U   │   !   │░                       │   ?   │   L   │   D   │   W   │   Z   │       │░
+│       │   <   │   {   │   [   │   (   │   !   │░                       │   ?   │   )   │   ]   │   }   │   >   │       │░
+│  tab  │   B   │   Y   │   O   │   U   │  ---  │░                       │  ---  │   L   │   D   │   W   │   Z   │       │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
-│  meh  │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  ---  │   C   │   I   │   E   │   A   │   .   │░                       │   V   │   H   │   T   │   S   │   N   │   Q   │░
+│  meh  │   "   │   _   │   '   │   :   │   .   │░                       │   /   │   =   │   ~   │   +   │   -   │       │░
+│  ---  │   C   │   I   │   E   │   A   │  ---  │░                       │   V   │   H   │   T   │   S   │   N   │   Q   │░
 │  esc  │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
-│       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│ shift │   G   │   X   │   J   │   K   │   ,   │░                       │   #   │   R   │   M   │   F   │   P   │ shift │░
+│       │   `   │   *   │   \   │   ;   │   ,   │░                       │   #   │   @   │   $   │   &   │   %   │       │░
+│ shift │   G   │   X   │   J   │   K   │  ---  │░                       │  ---  │   R   │   M   │   F   │   P   │ shift │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -383,9 +486,9 @@
 
                         bindings = <
 
-   &kp TAB              &kp B  &kp Y  &kp O  &kp U  &kp EXCL                                &kp QMARK  &kp L  &kp D  &kp W  &kp Z  &none
-   &red 0 ESC           &kp C  &kp I  &kp E  &kp A  &kp DOT                                 &kp V      &kp H  &kp T  &kp S  &kp N  &kp Q
-   &ss LSHFT LSHFT      &kp G  &kp X  &kp J  &kp K  &kp COMMA                               &kp HASH   &kp R  &kp M  &kp F  &kp P  &ss LSHFT LSHFT
+   &kp TAB              &rht LT B     &rht LBRC Y  &rht LBKT O  &rht LPAR U  &hso EXCL                              &hso QMARK  &rht RPAR L  &rht RBKT D  &rht RBRC W    &rht GT Z    &none
+   &red 0 ESC           &rht DQT C    &rht UNDER I &rht APOS E  &rht COLON A &hso DOT                               &rht FSLH V &rht EQUAL H &rht TILDE T &rht PLUS S    &rht MINUS N &kp Q
+   &ss LSHFT LSHFT      &rht GRAVE G  &rht STAR X  &rht BSLH J  &rht SEMI K  &hso COMMA                             &hso HASH   &rht AT R    &rht DLLR M  &rht AMPS F    &rht PRCNT P &ss LSHFT LSHFT
 
                   &alt_qwerty  &cmd_qwerty  &lt_cust SYM SPACE             &kp BSPC  &lt_cust NAV LEFT  &lt_cust NUM RIGHT
                         >;
@@ -400,25 +503,29 @@
 /*
 Cyrillic letters sit where the matching LATIN logical key is on the EN layer
 (e.g. п is where Latin p is). Keycodes sent are the QWERTY positions the macOS
-Russian (ЙЦУКЕН) layout maps to each letter. (x) below a key = hold for that
-paired letter (е→э, и→й, о→ё, у→ю, ш→щ, ж→з, ь→ъ).
+Russian (ЙЦУКЕН) layout maps to each letter. Ё is not on this layout.
 
-Inner columns carry always-on punctuation. In Russian mode these use ЙЦУКЕН
-keycodes: ! = Shift+1, . = "/" key, , = Shift+"/", ? = Shift+7. # is not on
-ЙЦУКЕН, so it uses the ru_hash macro (switch to EN, type #, switch back).
+Every printable symbol from the SYM layer can be typed here by HOLDING the key
+in the same physical position (top glyph = hold, letter = tap), or by holding
+Space (SYM) and tapping the key, as before. Symbols that exist in ЙЦУКЕН are
+sent directly: ! = Shift+1, " = Shift+2, ; = Shift+4, % = Shift+5, : = Shift+6,
+? = Shift+7, * = Shift+8, ( = Shift+9, ) = Shift+0, - and _ on the minus key,
+. = "/" key, , = Shift+"/". The rest (< { [ ] } > ' / = ~ + ` \ @ $ & #)
+briefly flip the OS to English and back via ru_sym_* / ru_hash macros
+(tune their wait-ms if a language switch is ever dropped).
 
 ┌───────┬───────┬───────┬───────┬───────┬───────┐                        ┌───────┬───────┬───────┬───────┬───────┬───────┐
+│       │   <   │   {   │   [   │   (   │   !   │░                       │   ?   │   )   │   ]   │   }   │   >   │       │░
+│  +++  │   Б   │   Ы   │   О   │   У   │   Ю   │░                       │   З   │   Л   │   Д   │   Ш   │   Ж   │   Щ   │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  +++  │   Б   │   Ы   │   О   │   У   │   !   │░                       │   ?   │   Л   │   Д   │   Ш   │   Ж   │       │░
-│       │       │       │  (ё)  │  (ю)  │       │░                       │       │       │       │  (щ)  │  (з)  │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
-│  meh  │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  ---  │   Ц   │   И   │   Е   │   А   │   .   │░                       │   В   │   Ч   │   Т   │   С   │   Н   │   Я   │░
-│  esc  │       │  (й)  │  (э)  │       │       │░                       │       │       │       │       │       │       │░
+│  meh  │   "   │   _   │   '   │   :   │   .   │░                       │   /   │   =   │   ~   │   +   │   -   │       │░
+│  ---  │   Ц   │   И   │   Е   │   А   │   Й   │░                       │   В   │   Н   │   Т   │   С   │   Ч   │   Я   │░
+│  esc  │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
+│       │   `   │   *   │   \   │   ;   │   ,   │░                       │   #   │   @   │   $   │   &   │   %   │       │░
+│  +++  │   Г   │   Х   │   Ь   │   К   │   Э   │░                       │   Ъ   │   Р   │   М   │   Ф   │   П   │  +++  │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│  +++  │   Г   │   Х   │   Ь   │   К   │   ,   │░                       │   #   │   Р   │   М   │   Ф   │   П   │  +++  │░
-│       │       │       │  (ъ)  │       │       │░                       │       │       │       │       │       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 ┌───────┬───────┐│       │░     │       │░┌───────┬───────┐
@@ -432,9 +539,9 @@ keycodes: ! = Shift+1, . = "/" key, , = Shift+"/", ? = Shift+7. # is not on
 */
                         bindings = <
 
-   &trans          &kp COMMA  &kp S     &rht GRAVE J  &rht DOT E  &kp EXCL       &kp LS(N7)  &kp K  &kp L  &rht O I  &rht P SEMI  &trans
-   &trans          &kp W      &rht Q B  &rht APOS T   &kp F       &kp FSLH       &kp D       &kp X  &kp N  &kp C     &kp Y        &kp Z
-   &trans          &kp U      &kp LBKT  &rht RBKT M   &kp R       &kp LS(FSLH)   &ru_hash    &kp H  &kp V  &kp A     &kp G        &trans
+   &trans          &rhs_lt 0 COMMA  &rhs_lbrc 0 S    &rhs_lbkt 0 J  &rht LS(N9) E     &rht EXCL DOT          &rht LS(N7) P    &rht LS(N0) K   &rhs_rbkt 0 L   &rhs_rbrc 0 I  &rhs_gt 0 SEMI  &kp O
+   &trans          &rht LS(N2) W    &rht LS(MINUS) B &rhs_apos 0 T   &rht LS(N6) F     &rht FSLH Q            &rhs_fslh 0 D    &rhs_equal 0 Y  &rhs_tilde 0 N  &rhs_plus 0 C  &rht MINUS X    &kp Z
+   &trans          &rhs_grave 0 U   &rht LS(N8) LBKT &rhs_bslh 0 M   &rht LS(N4) R     &rht LS(FSLH) APOS     &rh_hash 0 RBKT  &rhs_at 0 H     &rhs_dllr 0 V   &rhs_amps 0 A  &rht LS(N5) G   &trans
 
                             &trans  &trans  &hold_sym_r 0 SPACE                  &trans  &trans  &trans
                         >;
@@ -477,6 +584,8 @@ Row 3 = the rest:  ` * \ ;  (left)  and  @ $ & %  (right).
 Mnemonics: ~ on K (logical t = tilde), ` on Z (g = grave), * on X (x = times),
 % on / (p = percent);  ':' sits left of '.',  ';' sits left of ','.
 Inner columns (! . , ? #) are the always-on punctuation shared with base layers.
+Every printable symbol here can also be typed from EN/RU by HOLDING the key in
+the same physical position (tap = letter, hold = symbol).
 */
 
                         bindings = <
@@ -585,7 +694,7 @@ Inner columns (! . , ? #) are the always-on punctuation shared with base layers.
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 ├───────┼───────┼───────┼───────┼───────┼───────┤░                       ├───────┼───────┼───────┼───────┼───────┼───────┤░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
-│       │       │       │       │       │       │░                       │       │       │       │   7   │   8   │   9   │░
+│       │       │       │       │       │       │░                       │       │       │   0   │   7   │   8   │   9   │░
 │       │       │       │       │       │       │░                       │       │       │       │       │       │       │░
 └───────┴───────┴───────┴───────┴───────┴───────┘░                       └───────┴───────┴───────┴───────┴───────┴───────┘░
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░┌───────┐      ┌───────┐ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -602,7 +711,7 @@ Inner columns (! . , ? #) are the always-on punctuation shared with base layers.
                         bindings = <
    &none  &none  &none  &none  &none  &none                      &none  &none  &kp N0  &kp N1  &kp N2  &kp N3
    &none  &none  &none  &none  &none  &none                      &none  &none  &none   &kp N4  &kp N5  &kp N6
-   &none  &none  &none  &none  &none  &none                      &none  &none  &none   &kp N7  &kp N8  &kp N9
+   &none  &none  &none  &none  &none  &none                      &none  &none  &kp N0   &kp N7  &kp N8  &kp N9
 
                                      &none &none &none                             &none &none  &trans
                         >;
